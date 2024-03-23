@@ -1,5 +1,5 @@
 #include <iostream>
-#include "utilities/read_params.hpp"
+#include "../include/read_params.hpp"
 
 int main(void){
 	int nmolecules, latticesize, niterations, seed;
