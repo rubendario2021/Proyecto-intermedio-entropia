@@ -1,5 +1,13 @@
-WS_PATH := ./workshop/
-PDF_PATH := ./report/
+all: main_P1.out
+
+run_P1: main_P1.cpp
+	./main_P1.out
+
+%.o: %.cpp
+	g++ -c $<
+
+%.out: %.o
+	g++ $^ -o $@
 
 clean:
-	rm -f $(WS_PATH)*.out $(WS_PATH)*.o
+	rm -f *.out *.o
