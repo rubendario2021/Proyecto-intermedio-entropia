@@ -1,13 +1,24 @@
-all: main_P1.out
+CXX := g++
+BIN_DIR := bin
+BUILD_DIR := build
+SRC_DIR := src
+INC_DIR := include
 
-run_P1: main_P1.cpp
-	./main_P1.out
+TARGET := $(BIN_DIR)/P1.out
+CXXFLAGS := -Wall -g
 
-%.o: %.cpp
-	g++ -c $<
+SRCS := $(shell find $(SRC_DIR) -name '*.cpp' ! -name 'P2.cpp' ! -name 'P3.cpp' ! -name 'P4.cpp')
+OBJS := $(subst $(SRC_DIR), $(BUILD_DIR), $(SRCS:%.cpp=%.o))
+INCS := $(foreach d, $(INC_DIR), -I$d)
 
-%.out: %.o
-	g++ $^ -o $@
+run_P1: $(TARGET)
+	./$^
+
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
+	$(CXX) $(INCS) -c $^ -o $@
+
+$(TARGET): $(OBJS)
+	$(CXX) $^ -o $@
 
 clean:
-	rm -f *.out *.o
+	rm -f $(BIN_DIR)/*.out $(BUILD_DIR)/*.o
