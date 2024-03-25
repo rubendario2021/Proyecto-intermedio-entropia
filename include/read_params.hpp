@@ -3,4 +3,4 @@
 #include <fstream>
 #include <string>
 
-void read_params(std::string file_name, int *nmolecules, int *latticesize, int *niterations, int *seed);
+void read_params(std::string file_name, int *n_molecules, int *lattice_size, int *n_iterations, int *seed);
