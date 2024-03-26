@@ -6,8 +6,6 @@ int main(void){
 	int n_molecules, lattice_size, n_iterations, seed;
 	std::string ifile_name = "input/input.txt";
 	read_params(ifile_name, &n_molecules, &lattice_size, &n_iterations, &seed);
-<<<<<<< HEAD
-=======
 	
 	int dim = 2;
 	std::vector<double> particles(dim*n_molecules);
@@ -23,6 +21,5 @@ int main(void){
 	double entropy;
 	entropy = entropy_val(n_molecules, grid_size, grid);
 	std::cout << entropy << std::endl;
->>>>>>> entropy
 	return 0;
 }
