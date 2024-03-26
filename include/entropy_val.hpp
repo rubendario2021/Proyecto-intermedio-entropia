@@ -1,5 +1,5 @@
 #pragma once
-#include <cmath>
 #include <vector>
+#include <cmath>
 
-double entropy_val(int dim, int n_molecules, int lattice_size, int grid_size, std::vector<int> &grid_count, std::vector<double> &particles);
+double entropy_val(int n_molecules, int grid_size, std::vector<int> &grid);

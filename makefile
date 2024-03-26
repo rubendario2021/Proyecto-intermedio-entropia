@@ -15,7 +15,7 @@ run_P1: $(TARGET)
 	./$^
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
-	$(CXX) $(INCS) -c $^ -o $@
+	$(CXX) $(INCS) $(CXXFLAGS) -c $^ -o $@
 
 $(TARGET): $(OBJS)
 	$(CXX) $^ -o $@

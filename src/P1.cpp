@@ -1,4 +1,5 @@
 #include "read_params.hpp"
+#include "grid_count.hpp"
 #include "entropy_val.hpp"
 
 int main(void){
@@ -7,24 +8,18 @@ int main(void){
 	read_params(ifile_name, &n_molecules, &lattice_size, &n_iterations, &seed);
 	
 	int dim = 2;
-	std::vector<double> particles(dim * n_molecules);
-	for (int i = 0; i < particles.size(); i++){
+	std::vector<double> particles(dim*n_molecules);
+	for (int i = 0; i < n_molecules; i++){
 		particles[i] = 0.0;
 	}
-	particles[0] = {-1.5};
-	particles[1] = {-9.5};
-	particles[2] = {5.97};
-	particles[3] = {1.5};
+	// Aquí va el código de Juan Eliecer
 
 	int grid_size = 8;
-	std::vector<int> grid_count(grid_size * grid_size);
-	double entropy = entropy_val(dim, n_molecules, lattice_size, grid_size, grid_count, particles);
-	for (int i = 0; i < grid_size; i++){
-		for (int j = 0; j < grid_size; j++){
-			std::cout << grid_count[j*grid_size + i] << " ";
-		}
-		std::cout << "\n";
-	}
-	
+	std::vector<int> grid(grid_size*grid_size);
+	grid_count(dim, n_molecules, lattice_size, grid_size, grid, particles);
+
+	double entropy;
+	entropy = entropy_val(n_molecules, grid_size, grid);
+	std::cout << entropy << std::endl;
 	return 0;
 }
