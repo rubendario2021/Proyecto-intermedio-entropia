@@ -13,6 +13,8 @@ int main(void){
 	}
 	particles[0] = {-1.5};
 	particles[1] = {-9.5};
+	particles[2] = {5.97};
+	particles[3] = {1.5};
 
 	int grid_size = 8;
 	std::vector<int> grid_count(grid_size * grid_size);
