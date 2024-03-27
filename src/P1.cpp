@@ -20,7 +20,7 @@ int main(void){
 	}
 
 	// Definition of the initial positions of the molecules
-	initialize_position(dim, n_molecules, molecules, lattice_size);
+	initialize_position(dim, n_molecules, lattice_size, molecules);
 
 	// Definition of the container size
 	int grid_size = 40;
