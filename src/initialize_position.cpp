@@ -14,7 +14,7 @@ void  initialize_position(int &dim, int &n_molecules, int &lattice_size, std::ve
 		molecules[i*dim + pos_x] = (i % length_square)*separation + offset;
         // The y position is calculated through an integer division
         molecules[i*dim + pos_y] = (i/length_square)*separation + offset;
-        // std::cout << "Molecula " << i+1 << "\t" << molecules[i*dim + pos_x] << "\t" << molecules[i*dim + pos_y] << "\n" ;
+        // std::cout << "Molecula " << i+1 << "\t" << particles[i*dim + pos_x] << "\t" << particles[i*dim + pos_y] << "\n" ;
     }
 }
 

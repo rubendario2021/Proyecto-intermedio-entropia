@@ -20,7 +20,7 @@ int main(void){
 	initialize_position(dim, n_molecules, lattice_size, molecules);
 
 	// Definition of the container size
-	int grid_size = 40;
+	int grid_size = 8;
 	std::vector<int> grid(grid_size*grid_size);
 	grid_count(dim, n_molecules, lattice_size, grid_size, grid, molecules); //Counting the number of nodes at each cell grid
 
@@ -29,6 +29,7 @@ int main(void){
 	entropy = entropy_val(n_molecules, grid_size, grid);
 	std::cout << entropy << std::endl;
 
+	// Calculation of the root mean square distance
 	double root_mean_square;
 	root_mean_square = root_mean_square_distance(dim, n_molecules, molecules);
 	std::cout << root_mean_square << std::endl;
