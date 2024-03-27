@@ -1,6 +1,7 @@
 CXX := g++
 BIN_DIR := bin
 BUILD_DIR := build
+OUTPUT_DIR := output
 SRC_DIR := src
 INC_DIR := include
 
@@ -12,7 +13,7 @@ OBJS := $(subst $(SRC_DIR), $(BUILD_DIR), $(SRCS:%.cpp=%.o))
 INCS := $(foreach d, $(INC_DIR), -I$d)
 
 run_P1: $(TARGET)
-	./$^
+	./$^ > $(OUTPUT_DIR)/output.txt
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(CXX) $(INCS) $(CXXFLAGS) -c $^ -o $@

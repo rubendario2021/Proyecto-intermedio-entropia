@@ -3,8 +3,9 @@
 double entropy_val(int &n_molecules, int &grid_size, std::vector<int> &grid) {
 	double entropy;
 
+	int count;
 	for (int i = 0; i < (grid_size*grid_size); i++) {
-		int count = grid[i];
+		count = grid[i];
 		if (count == 0) {
 			// If there are no particles in the grid cell, that cell is skipped from the analysis
 			continue;

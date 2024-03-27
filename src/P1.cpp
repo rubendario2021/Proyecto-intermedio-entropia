@@ -3,6 +3,7 @@
 #include "entropy_val.hpp"
 #include "initialize_position.hpp"
 #include "root_mean_square_distance.hpp"
+#include "random_movement.hpp"
 
 int main(void){
 	// Definition of the entries in the file "input.txt" as integers
@@ -20,9 +21,20 @@ int main(void){
 	initialize_position(dim, n_molecules, lattice_size, molecules);
 
 	// Definition of the container size
-	int grid_size = 8;
+	int grid_size = 16;
 	std::vector<int> grid(grid_size*grid_size);
-	grid_count(dim, n_molecules, lattice_size, grid_size, grid, molecules); //Counting the number of nodes at each cell grid
+
+	//GEN DEFINITION
+    std::mt19937 gen(seed);
+    std::uniform_int_distribution<int> direction_distribution(0, 3);
+
+	for(int i=0; i<50000; i++){
+		// random movement
+		random_movement(dim, n_molecules, lattice_size, seed, molecules, gen, direction_distribution);
+		//Counting the number of nodes at each cell grid
+		grid_count(dim, n_molecules, lattice_size, grid_size, grid, molecules); 
+	}
+
 
 	// Calculation of the system's entropy
 	double entropy;
