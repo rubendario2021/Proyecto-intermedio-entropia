@@ -10,19 +10,19 @@ int main(void){
 
 	// Call the file "input.txt" and call a function to read the variables
 	std::string ifile_name = "input/input.txt";
-	read_params(ifile_name, &n_molecules, &lattice_size, &n_iterations, &seed);
+	read_params(ifile_name, n_molecules, lattice_size, n_iterations, seed);
 	
 	// Creation of the matrix of particle positions
 	int dim = 2;
-	std::vector<double> particles(dim*n_molecules);
+	std::vector<double> molecules(dim*n_molecules);
 
-	// Definition of the initial positions of the particles
-	initialize_position(dim, n_molecules, particles, lattice_size);
+	// Definition of the initial positions of the molecules
+	initialize_position(dim, n_molecules, lattice_size, molecules);
 
 	// Definition of the container size
 	int grid_size = 40;
 	std::vector<int> grid(grid_size*grid_size);
-	grid_count(dim, n_molecules, lattice_size, grid_size, grid, particles); //Counting the number of nodes at each cell grid
+	grid_count(dim, n_molecules, lattice_size, grid_size, grid, molecules); //Counting the number of nodes at each cell grid
 
 	// Calculation of the system's entropy
 	double entropy;
