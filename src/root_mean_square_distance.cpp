@@ -7,7 +7,7 @@ double root_mean_square_distance(int &dim, int &n_molecules, std::vector<double>
 	for (int i = 0; i < n_molecules; i++) {
 		coord_x = molecules[i*dim + pos_x];
 		coord_y = molecules[i*dim + pos_y];
-		sum += coord_x * coord_x + coord_y * coord_y;
+		sum += (coord_x*coord_x + coord_y*coord_y);
 	}
 	root_mean_square = std::sqrt(sum/n_molecules);
 	return root_mean_square;
