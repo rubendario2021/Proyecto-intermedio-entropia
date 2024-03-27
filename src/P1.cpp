@@ -1,6 +1,7 @@
 #include "read_params.hpp"
 #include "grid_count.hpp"
 #include "entropy_val.hpp"
+#include "initialize_position.hpp"
 
 int main(void){
 	int n_molecules, lattice_size, n_iterations, seed;
@@ -12,7 +13,9 @@ int main(void){
 	for (int i = 0; i < n_molecules; i++){
 		particles[i] = 0.0;
 	}
-	// Aquí va el código de Juan Eliecer
+
+	initialize_position(dim, n_molecules, particles, lattice_size);
+
 
 	int grid_size = 8;
 	std::vector<int> grid(grid_size*grid_size);
