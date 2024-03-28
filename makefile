@@ -15,18 +15,34 @@ INCS := $(foreach d, $(INC_DIR), -I$d)
 
 # ---------------------------------------------------------------
 
-OUT_P1_MOL := output/P1/molecules
+OUT_P1 := $(OUT_DIR)/P1
+OUT_P1_MOL := $(OUT_P1)/molecules
+
+PLT_P1 := $(PLT_DIR)/P1
+PLT_P1_MOL := $(PLT_P1)/molecules
 
 OUT_MOL := $(shell find $(OUT_P1_MOL) -name '*.txt')
-PDF_MOL := $(subst $(OUT_DIR), $(PLT_DIR), $(OUT_MOL:%.txt=%.pdf))
+OUT_PARAMS := $(shell find $(OUT_P1) -name '*.txt')
 
-all: run_P1
+all: run_P1 plot_molecules_P1
 
 run_P1: $(TARGET)
 	./$^
 
-plot_P1: 
-	$(foreach d, $(OUT_MOL), gnuplot -e "input_file=$d" -e "output_file=" plot/script_molecules.gp)
+.ONESHELL:
+plot_molecules_P1: $(PLT_DIR)/script_molecules.gp $(OUT_MOL)
+	@for F in $(OUT_MOL)
+	do
+		gnuplot -c $< $$F $(PLT_P1_MOL)/$$(basename $$F .txt).pdf
+	done
+
+.ONESHELL:
+plot_entropy_P1: $(PLT_DIR)/script_entropy.gp $(OUT_P1)/entropy_gs_8.txt
+	@for F in $(OUT_P1)/entropy_gs_8.txt
+	do
+		gnuplot -c $< $$F $(PLT_P1)/$$(basename $$F .txt).pdf
+	done 
+
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(CXX) $(INCS) $(CXXFLAGS) -c $^ -o $@
@@ -36,3 +52,5 @@ $(TARGET): $(OBJS)
 
 clean:
 	rm -f $(BIN_DIR)/*.out $(BUILD_DIR)/*.o
+	rm -f $(OUT_DIR)/P1/*.txt $(OUT_P1_MOL)/*.txt
+	rm -f $(PLT_DIR)/P1/*.pdf $(PLT_P1_MOL)/*.pdf

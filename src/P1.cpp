@@ -5,10 +5,12 @@
 #include "root_mean_square_distance.hpp"
 #include "random_movement.hpp"
 #include "save_molecules.hpp"
+#include "save_rmsd.hpp"
+#include "save_entropy.hpp"
 
 int main(void){
 	// Key that show the code (change)
-	std::string problem_id = "1";
+	int problem_id = 1;
 	// Definition of the entries in the file "input.txt" as integers
 	int n_molecules, lattice_size, n_iterations, seed;
 	// Call the file "input.txt" and call a function to read the variables
@@ -16,9 +18,12 @@ int main(void){
 	read_params(ifile_name, n_molecules, lattice_size, n_iterations, seed);
 	// Creation of the matrix of particle positions
 	int dim = 2;
+	int idx = 0;
 	std::vector<double> molecules(dim*n_molecules);
 	// Definition of the initial positions of the molecules
 	initialize_position(dim, n_molecules, lattice_size, molecules);
+	// Saving into a text file the coordinates of the molecules for plotting
+	save_molecules(idx, problem_id, dim, n_molecules, molecules);
 	// Definition of the container size for probability
 	int grid_size = 8;
 	std::vector<int> grid(grid_size*grid_size);
@@ -26,31 +31,31 @@ int main(void){
     std::mt19937 gen(seed);
     std::uniform_int_distribution<int> direction_distribution(0, 3);
 	// Definition of some values to save
-	double entropy;
-	double root_mean_square;
-	// Definition of a dynamic file name
-	std::string ofile_name = "output/P" + problem_id + "/parameters_" + std::to_string(grid_size) + ".txt";
-	std::ofstream output_params(ofile_name);
+	int save_step = 100;
+	//n_iterations = 10000;
+	std::vector<double> entropy(n_iterations/save_step);
+	std::vector<double> rmsd(n_iterations/save_step);
+	double eps = 1e-6;
 	// The code is iterated to perform the movement of the particle and the respective calculations
-	n_iterations = 10000;
-	for(int i = 0; i < n_iterations; i++) {
+	for(idx = 1; idx <= n_iterations; idx++) {
 		// A random movement of the particles is generated
 		random_movement(dim, n_molecules, lattice_size, seed, molecules, gen, direction_distribution);
 		// Counting the number of nodes at each cell grid
 		grid_count(dim, n_molecules, lattice_size, grid_size, grid, molecules);
-		// Calculation of the system's entropy
-		entropy = entropy_val(n_molecules, grid_size, grid);
-		// Calculation of the root mean square distance
-		root_mean_square = root_mean_square_distance(dim, n_molecules, molecules);
-		// Saving parameters in its file
-		output_params << i << "\t" << entropy << "\t" << root_mean_square << std::endl;
+		if (idx%100 == 0) {
+			// Calculation of the system's entropy
+			entropy[idx/100] = entropy_val(n_molecules, grid_size, grid);
+			// Calculation of the root mean square distance
+			rmsd[idx/100] = root_mean_square_distance(dim, n_molecules, molecules);
+		}
 		// Condition to save molecules position
-		if (i%10 == 0) {
+		if ((idx >= 1e4) && (std::fmod(std::log10(idx), 1) <= eps)) {
 			// Saving into a text file the coordinates of the molecules for plotting
-			save_molecules(i, problem_id, dim, n_molecules, molecules);
+			save_molecules(idx, problem_id, dim, n_molecules, molecules);
 		}
 	}
-	// Closing the parameters file
-	output_params.close();
+	// Saving parameters
+	save_entropy(n_iterations, save_step, problem_id, grid_size, entropy);
+	save_rmsd(n_iterations, save_step, problem_id, rmsd);
 	return 0;
 }
