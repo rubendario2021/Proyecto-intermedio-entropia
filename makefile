@@ -13,7 +13,8 @@ OBJS := $(subst $(SRC_DIR), $(BUILD_DIR), $(SRCS:%.cpp=%.o))
 INCS := $(foreach d, $(INC_DIR), -I$d)
 
 run_P1: $(TARGET)
-	./$^ > $(OUTPUT_DIR)/output.txt
+	./$^
+	# ./$^ > $(OUTPUT_DIR)/output.txt
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(CXX) $(INCS) $(CXXFLAGS) -c $^ -o $@
@@ -23,3 +24,4 @@ $(TARGET): $(OBJS)
 
 clean:
 	rm -f $(BIN_DIR)/*.out $(BUILD_DIR)/*.o
+	rm -f $(OUTPUT_DIR)/data.txt $(OUTPUT_DIR)/output.txt $(OUTPUT_DIR)/Posicion_salida.png

@@ -17,7 +17,7 @@ void grid_count(int &dim, int &n_molecules, int &lattice_size, int &grid_size, s
 		y_bin = std::floor((molecules[i*dim + pos_y] + lattice_size/2.0) / grid_bin_size);
 		grid[y_bin*grid_size + x_bin] += 1; //
 	}
-	// /*
+	/*
 	for (int i = 0; i < grid_size; ++i) {
         for (int j = 0; j < grid_size; ++j) {
             std::cout << grid[i*grid_size + j] << " ";
@@ -25,5 +25,5 @@ void grid_count(int &dim, int &n_molecules, int &lattice_size, int &grid_size, s
         std::cout << std::endl;
     }
 	std::cout << "\n" << std::endl;
-	// */
+	*/
 }
