@@ -31,9 +31,9 @@ int main(void){
     std::mt19937 gen(seed);
     std::uniform_int_distribution<int> direction_distribution(0, 3);
 	// Definition of some values to save and optimize script
-	int save_step = 1000;
+	int save_step = 2000;
 	// Expansion to see stabilization of parameters
-	n_iterations *= 3;
+	n_iterations *= 6;
 	std::vector<double> entropy(n_iterations/save_step);
 	std::vector<double> rmsd(n_iterations/save_step);
 	// Tolerance to use in a condition
