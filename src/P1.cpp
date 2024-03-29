@@ -19,23 +19,24 @@ int main(void){
 	// Creation of the matrix of particle positions
 	int dim = 2;
 	int idx = 0;
-	std::vector<double> molecules(dim*n_molecules);
+	std::vector<double> molecules(dim*n_molecules, 0.0);
 	// Definition of the initial positions of the molecules
 	initialize_position(dim, n_molecules, lattice_size, molecules);
 	// Saving into a text file the coordinates of the molecules for plotting
 	save_molecules(idx, problem_id, dim, n_molecules, molecules);
 	// Definition of the container size for probability
 	int grid_size = 8;
-	std::vector<int> grid(grid_size*grid_size);
+	std::vector<int> grid(grid_size*grid_size, 0);
 	// The random number generator engine is created before the function to avoid initializing it on each call
     std::mt19937 gen(seed);
     std::uniform_int_distribution<int> direction_distribution(0, 3);
 	// Definition of some values to save and optimize script
 	int save_step = 2000;
 	// Expansion to see stabilization of parameters
-	n_iterations *= 6;
-	std::vector<double> entropy(n_iterations/save_step);
-	std::vector<double> rmsd(n_iterations/save_step);
+	//n_iterations *= 6;
+	n_iterations = 10000;
+	std::vector<double> entropy(n_iterations/save_step, 0);
+	std::vector<double> rmsd(n_iterations/save_step, 0);
 	// Tolerance to use in a condition
 	double eps = 1e-10;
 	// The code is iterated to perform the movement of the particle and the respective calculations
@@ -58,6 +59,6 @@ int main(void){
 	}
 	// Saving parameters
 	save_entropy(n_iterations, save_step, problem_id, grid_size, entropy);
-	save_rmsd(n_iterations, save_step, problem_id, rmsd);
+	// save_rmsd(n_iterations, save_step, problem_id, rmsd);
 	return 0;
 }

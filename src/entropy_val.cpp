@@ -1,8 +1,7 @@
 #include "entropy_val.hpp"
 
 double entropy_val(int &n_molecules, int &grid_size, std::vector<int> &grid) {
-	double entropy;
-
+	double entropy, P_i;
 	int count;
 	for (int i = 0; i < (grid_size*grid_size); i++) {
 		count = grid[i];
@@ -11,7 +10,7 @@ double entropy_val(int &n_molecules, int &grid_size, std::vector<int> &grid) {
 			continue;
 		} else {
 			// The entropy is calculated as: sum[-P_i * ln(P_i)] where P_i is the probability associated with the cell
-			double P_i = static_cast<double>(count)/n_molecules;
+			P_i = static_cast<double>(count)/n_molecules;
 			entropy += (-P_i * std::log(P_i));
 		}
 	}
