@@ -19,6 +19,6 @@ set title sprintf("{/:Bold Cream in Coffee t = 10^{%s}}", fmt_n_iter[5:]) enhanc
 set xlabel "{/:Bold X}"
 set ylabel "{/:Bold Y}"
 
-plot ARG1 ps 0.5 pt 7 lc "black" notitle
+plot ARG1 ps 0.2 pt 7 lc "black" notitle
 
 unset output

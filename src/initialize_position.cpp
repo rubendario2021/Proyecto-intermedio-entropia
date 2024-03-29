@@ -2,7 +2,7 @@
 
 void  initialize_position(int &dim, int &n_molecules, int &lattice_size, std::vector<double> &molecules){
     // Initial separation between molecules
-    double separation = 0.02; 
+    double separation = 0.1; 
     // The number of input nodes must be a square number
     int length_square = std::sqrt(n_molecules);
     // The initial molecules is centered in the middle of the container
