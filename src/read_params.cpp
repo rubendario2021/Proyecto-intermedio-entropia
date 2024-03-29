@@ -2,10 +2,9 @@
 
 void read_params(std::string &file_name, int &n_molecules, int &lattice_size, int &n_iterations, int &seed){
 	std::ifstream file(file_name);
-
 	// The text file is opened
 	if (file.is_open()) {
-		std::string line; // Creation of a variable to store the lines of the text file
+		std::string line = ""; // Creation of a variable to store the lines of the text file
 		int line_number = 0;
 
 		while (std::getline(file, line)) {

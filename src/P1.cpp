@@ -12,7 +12,10 @@ int main(void){
 	// Key that show the code (change)
 	int problem_id = 1;
 	// Definition of the entries in the file "input.txt" as integers
-	int n_molecules, lattice_size, n_iterations, seed;
+	int n_molecules = 0;
+	int lattice_size = 0;
+	int n_iterations = 0;
+	int seed = 0;
 	// Call the file "input.txt" and call a function to read the variables
 	std::string ifile_name = "input/input.txt";
 	read_params(ifile_name, n_molecules, lattice_size, n_iterations, seed);
@@ -33,26 +36,27 @@ int main(void){
 	// Definition of some values to save and optimize script
 	int save_step = 2000;
 	// Expansion to see stabilization of parameters
-	//n_iterations *= 6;
-	n_iterations = 10000;
-	std::vector<double> entropy(n_iterations/save_step, 0);
-	std::vector<double> rmsd(n_iterations/save_step, 0);
-	// Tolerance to use in a condition
-	double eps = 1e-10;
+	// n_iterations *= 6;
+	n_iterations = 100000;
+	int save_idx = 0;
+	std::vector<double> entropy(n_iterations/save_step, 0.0);
+	// std::vector<double> rmsd(n_iterations/save_step, 0.0);
 	// The code is iterated to perform the movement of the particle and the respective calculations
 	for(idx = 1; idx <= n_iterations; idx++) {
+		if (idx%10000 == 0) std::cout << idx << std::endl;
 		// A random movement of the particles is generated
 		random_movement(dim, n_molecules, lattice_size, seed, molecules, gen, direction_distribution);
 		// Counting the number of nodes at each cell grid
 		grid_count(dim, n_molecules, lattice_size, grid_size, grid, molecules);
 		if (idx%save_step == 0) {
+			save_idx = idx/save_step - 1;
 			// Calculation of the system's entropy
-			entropy[idx/save_step] = entropy_val(n_molecules, grid_size, grid);
+			entropy[save_idx] = entropy_val(n_molecules, grid_size, grid);
 			// Calculation of the root mean square distance
-			rmsd[idx/save_step] = root_mean_square_distance(dim, n_molecules, molecules);
+			// rmsd[save_idx] = root_mean_square_distance(dim, n_molecules, molecules);
 		}
 		// Condition to save molecules position
-		if ((idx >= 1e4) && (std::fmod(std::log10(idx), 1) <= eps)) {
+		if ((idx == 1e4) || (idx == 1e5) || (idx == 1e6)) {
 			// Saving into a text file the coordinates of the molecules for plotting
 			save_molecules(idx, problem_id, dim, n_molecules, molecules);
 		}

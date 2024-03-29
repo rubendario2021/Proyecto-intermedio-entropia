@@ -4,10 +4,9 @@ void random_movement(int &dim, int &n_molecules, int &lattice_size, int &seed, s
 
     // The constant movement passage of the simulation is defined
     double step_size = 0.005;
-
     // Definition of constants for particle movement
     int pos_x = 0, pos_y = 1;
-    int direction;
+    int direction = 0;
     double limit = lattice_size/2.0; // Limit for a centered coordinate system
     double m_limit = -1.0*limit;
     // For contact with the wall or position outside the box, the movement in that direction is reflected twice

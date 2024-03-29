@@ -15,7 +15,7 @@ set xtics 1e6
 set ytics 1
 set grid
 
-set title sprintf("{/:Bold Entropy versus time gs = %.0d}", real(grid_size)) enhanced
+set title sprintf("{/:Bold Entropy versus time gs = %.0d}", int(grid_size)) enhanced
 set xlabel "{/:Bold time}"
 set ylabel "{/:Bold Entropy}"
 

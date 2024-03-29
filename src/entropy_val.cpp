@@ -1,8 +1,9 @@
 #include "entropy_val.hpp"
 
 double entropy_val(int &n_molecules, int &grid_size, std::vector<int> &grid) {
-	double entropy, P_i;
-	int count;
+	double entropy = 0.0;
+	double P_i = 0.0;
+	int count = 0;
 	for (int i = 0; i < (grid_size*grid_size); i++) {
 		count = grid[i];
 		if (count == 0) {

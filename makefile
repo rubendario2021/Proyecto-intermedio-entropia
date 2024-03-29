@@ -5,19 +5,19 @@ BUILD_DIR := build
 OUT_DIR := output
 SRC_DIR := src
 INC_DIR := include
+PLT_DIR := plot
 
 # Compilation flags
 
 CXX := g++
 CXXFLAGS := -Wall -g
 CXXSANITIZERS := -fsanitize=leak,address,undefined
-CXXOPTIMIZED := -O3
 VALXXMEMCHECK := --tool=memcheck --track-origins=yes --leak-check=full
+VALXXCACHEGRIND := --tool=cachegrind
 
 # Input paths
 
 TARGET_P1 := $(BIN_DIR)/P1.out
-TARGET_OP1 := $(BIN_DIR)/P1_optimized.out
 TARGET_VP1 := $(BIN_DIR)/P1_valgrind.out
 
 SRCS := $(shell find $(SRC_DIR) -name '*.cpp' ! -name 'P2.cpp' ! -name 'P3.cpp' ! -name 'P4.cpp')
@@ -26,7 +26,6 @@ INCS := -I$(INC_DIR)
 
 # gnuplot scripts
 
-PLT_DIR := plot
 PLT_MOLECULES := $(PLT_DIR)/script_molecules.gp
 PLT_ENTROPY := $(PLT_DIR)/script_entropy.gp
 PLT_RSMD := $(PLT_DIR)/script_rsmd.gp
@@ -45,11 +44,13 @@ OUT_RSMD := $(shell find $(OUT_P1) -name '*.txt' ! -name 'entropy.txt' ! -wholen
 all: run
 
 run:
+	$(MAKE) clean
 	$(MAKE) run_P1
 	$(MAKE) plot_molecules_P1 plot_entropy_P1
 
 run_optimized:
-	$(MAKE) run_optimized_P1
+	$(MAKE) clean
+	$(MAKE) run_P1 CXXFLAGS="$(CXXFLAGS) -O3"
 
 test:
 	$(MAKE)
@@ -58,9 +59,11 @@ gprof:
 	$(MAKE)
 
 cachegrind:
-	$(MAKE)
+	$(MAKE) clean
+	$(MAKE) cachegrind_P1
 
 memcheck:
+	$(MAKE) clean
 	$(MAKE) memcheck_P1
 
 report: 
@@ -71,11 +74,13 @@ report:
 run_P1: $(TARGET_P1)
 	./$^
 
-run_optimized_P1: $(TARGET_OP1)
-	./$^
-
 memcheck_P1: $(TARGET_VP1)
 	valgrind $(VALXXMEMCHECK) ./$^
+
+cachegrind_P1: $(TARGET_VP1)
+	valgrind $(VALXXCACHEGRIND) ./$^; \
+	mv $^.* $^; \
+	cg_annotate --auto=yes $^
 
 plot_molecules_P1: $(PLT_MOLECULES) $(OUT_MOL)
 	@for F in $(OUT_MOL); do \
@@ -97,9 +102,6 @@ $(TARGET_P1): $(OBJS)
 
 $(TARGET_VP1): $(OBJS)
 	$(CXX) $^ -o $@
-
-$(TARGET_OP1): $(OBJS)
-	$(CXX) $(CXXSANITIZERS) $(CXXOPTIMIZED) $^ -o $@
 
 # Clean target
 
