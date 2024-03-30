@@ -2,6 +2,7 @@
 
 BIN_DIR := bin
 BUILD_DIR := build
+INP_DIR := input
 OUT_DIR := output
 SRC_DIR := src
 INC_DIR := include
@@ -12,8 +13,14 @@ PLT_DIR := plot
 CXX := g++
 CXXFLAGS := -Wall -g
 CXXSANITIZERS := -fsanitize=leak,address,undefined
+CXXPROFILER := -pg
 VALXXMEMCHECK := --tool=memcheck --track-origins=yes --leak-check=full
 VALXXCACHEGRIND := --tool=cachegrind
+
+# Input files
+
+IFILE := $(INP_DIR)/input.txt
+IFILE_PROF := $(INP_DIR)/input-profiling.txt
 
 # Input paths
 
@@ -41,20 +48,25 @@ OUT_RSMD := $(shell find $(OUT_P1) -name '*.txt' ! -name 'entropy.txt' ! -wholen
 
 # General makefile instructions
 
+# Target by default
 all: run
 
+# Target that execute and plot the data
 run:
 	$(MAKE) clean
 	$(MAKE) run_P1
 	$(MAKE) plot_molecules_P1 plot_entropy_P1
 
+# Target that execute with optimizers
 run_optimized:
 	$(MAKE) clean
 	$(MAKE) run_P1 CXXFLAGS="$(CXXFLAGS) -O3"
 
+# Target that execute the test for certain functions
 test:
 	$(MAKE)
 
+# Target that perform a profiling using gprof
 gprof:
 	$(MAKE)
 
@@ -66,9 +78,6 @@ memcheck:
 	$(MAKE) clean
 	$(MAKE) memcheck_P1
 
-report: 
-	$(MAKE)
-
 # Makefile instructions for each point
 
 run_P1: $(TARGET_P1)
@@ -79,8 +88,7 @@ memcheck_P1: $(TARGET_VP1)
 
 cachegrind_P1: $(TARGET_VP1)
 	valgrind $(VALXXCACHEGRIND) ./$^; \
-	mv $^.* $^; \
-	cg_annotate --auto=yes $^
+#	cg_annotate --auto=yes cachegrind_output.txt > cachegrind-report.txt
 
 plot_molecules_P1: $(PLT_MOLECULES) $(OUT_MOL)
 	@for F in $(OUT_MOL); do \

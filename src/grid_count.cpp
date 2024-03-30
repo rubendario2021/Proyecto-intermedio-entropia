@@ -5,6 +5,7 @@ void grid_count(int &dim, int &n_molecules, int &lattice_size, int &grid_size, s
 	double grid_bin_size = static_cast<double>(lattice_size) / grid_size;
 	int x_bin = 0, y_bin = 0;
 	int pos_x = 0, pos_y = 1;
+	double min_val = -lattice_size/2.0;
 	// The counter for storing the quantity of molecules is reset
 	grid.clear();
 	grid.resize(grid_size*grid_size, 0);
@@ -12,8 +13,8 @@ void grid_count(int &dim, int &n_molecules, int &lattice_size, int &grid_size, s
 	for (int i = 0; i < n_molecules; i++){
 		/* A program useful in a domain with particles in x,y = [-10,10). The grid index is obtained as: 
 				Index = distance from the left/bottom edge / Grid cell size */
-		x_bin = std::floor((molecules[i*dim + pos_x] + lattice_size/2.0) / grid_bin_size);
-		y_bin = std::floor((molecules[i*dim + pos_y] + lattice_size/2.0) / grid_bin_size);
+		x_bin = static_cast<int>((molecules[i*dim + pos_x] - min_val) / grid_bin_size);
+		y_bin = static_cast<int>((molecules[i*dim + pos_y] - min_val) / grid_bin_size);
 		grid[y_bin*grid_size + x_bin] += 1; //
 	}
 }
