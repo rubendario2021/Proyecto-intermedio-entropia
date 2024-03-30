@@ -6,7 +6,7 @@ void save_molecules(int &iter, int &problem_id, int &dim, int &n_molecules, std:
 	int pos_x = 0, pos_y = 1;
 	if (output_file.is_open()) {
         for (int i = 0; i < n_molecules; i++) {
-            output_file << molecules[i*dim + pos_x] << "\t" << molecules[i*dim + pos_y] << std::endl;
+            output_file << std::fixed << std::setprecision(6) << molecules[i*dim + pos_x] << "\t" << molecules[i*dim + pos_y] << std::endl;
         }
         output_file.close();
     } else {

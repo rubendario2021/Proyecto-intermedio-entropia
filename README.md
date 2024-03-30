@@ -1,6 +1,6 @@
 # Proyecto Intermedio
 
-**Nota:** Por favor antes de ejecutar las intrucciones, lea el siguiente archivo con cuidado.
+Por favor antes de ejecutar las intrucciones, lea el siguiente archivo con cuidado.
 
 Asegúrese de estar dentro del directorio en el cual se encuentra este documento y ejecute los siguientes comandos en función de la acción que busque realizar.
 
@@ -39,3 +39,7 @@ Asegúrese de estar dentro del directorio en el cual se encuentra este documento
 	```
 	make memcheck
 	```
+
+**Nota:** Por defecto el programa esta leyendo un archivo de parámetros de entrada con la siguiente ruta `code/input/input.txt`, sin embargo, para realizar el profiling y evaluar el uso de memoria, el archivo de entrada cambia a `code/input/input-profiling.txt` debido a los tiempos de ejecución.
+
+Es por ello que la generación de gráficas utilizadas en el reporte se realiza únicamente cuando se utiliza el comando `make`.
