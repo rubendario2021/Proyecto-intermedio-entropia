@@ -8,7 +8,7 @@
 #include "save_rmsd.hpp"
 #include "save_entropy.hpp"
 
-int main(void){
+int main(int argc, char *argv[]){
 	// Key that indicate the problem to solve
 	int problem_id = 1;
 
@@ -19,7 +19,7 @@ int main(void){
 	int seed = 0;
 	// Call the file "input.txt" and a function to read the variables and assign them
 	// Change this, make it console dependent
-	std::string ifile_name = "input/input.txt";
+	std::string ifile_name = std::string(argv[1]);
 	read_params(ifile_name, n_molecules, lattice_size, n_iterations, seed);
 
 	// Creation of the matrix of particle positions
@@ -41,7 +41,7 @@ int main(void){
 	std::vector<double> entropy(n_iterations/save_step, 0.0);
 	// Expansion to see stabilization of parameters
 	n_iterations *= 6;
-	//n_iterations = 100000;
+	// n_iterations = 100000;
 	int save_idx = 0;
 
 	// The random number generator engine is created before the function to avoid initializing it on each call
