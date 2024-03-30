@@ -1,6 +1,6 @@
-#include "root_mean_square_distance.hpp"
+#include "rmsd_val.hpp"
 
-double root_mean_square_distance(int &dim, int &n_molecules, std::vector<double> &molecules) {
+double rmsd_val(int &dim, int &n_molecules, std::vector<double> &molecules) {
 	// Creation of auxiliar variables to calculate rsmd
 	double sum = 0.0;
 	// Creation of coordinates and index

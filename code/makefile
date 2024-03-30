@@ -23,8 +23,8 @@ VALXXCACHEGRIND := --tool=cachegrind
 
 # Input files
 
-IFILE := $(INP_DIR)/input.txt
-IFILE_PROF := $(INP_DIR)/input-profiling.txt
+IFILE := $(IN_DIR)/input.txt
+IFILE_PROF := $(IN_DIR)/input-profiling.txt
 
 # General files
 

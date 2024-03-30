@@ -2,7 +2,7 @@
 #include "grid_count.hpp"
 #include "entropy_val.hpp"
 #include "initialize_position.hpp"
-#include "root_mean_square_distance.hpp"
+#include "rmsd_val.hpp"
 #include "random_movement.hpp"
 #include "save_molecules.hpp"
 #include "save_rmsd.hpp"
@@ -40,8 +40,7 @@ int main(int argc, char *argv[]){
 	int save_step = 2000;
 	std::vector<double> entropy(n_iterations/save_step, 0.0);
 	// Expansion to see stabilization of parameters
-	n_iterations *= 6;
-	// n_iterations = 100000;
+	if (n_iterations == 1e6) n_iterations *= 6;
 	int save_idx = 0;
 
 	// The random number generator engine is created before the function to avoid initializing it on each call
@@ -71,6 +70,6 @@ int main(int argc, char *argv[]){
 	}
 
 	// Saving entropy data
-	save_entropy(n_iterations, save_step, problem_id, grid_size, entropy);
+	save_entropy(n_iterations, save_step, problem_id, entropy);
 	return 0;
 }

@@ -1,0 +1,817 @@
+--------------------------------------------------------------------------------
+I1 cache:         32768 B, 64 B, 8-way associative
+D1 cache:         49152 B, 64 B, 12-way associative
+LL cache:         18874368 B, 64 B, 18-way associative
+Command:          ./P1.out input/input-profiling.txt
+Data file:        cachegrind.out.20798
+Events recorded:  Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Events shown:     Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Event sort order: Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Thresholds:       0.1 100 100 100 100 100 100 100 100
+Include dirs:     
+User annotated:   
+Auto-annotation:  on
+
+--------------------------------------------------------------------------------
+Ir                     I1mr           ILmr           Dr                     D1mr            DLmr           Dw                     D1mw           DLmw           
+--------------------------------------------------------------------------------
+9,627,680,209 (100.0%) 6,041 (100.0%) 2,572 (100.0%) 4,154,823,684 (100.0%) 13,036 (100.0%) 7,640 (100.0%) 1,963,925,241 (100.0%) 2,399 (100.0%) 1,518 (100.0%)  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+Ir                     I1mr         ILmr         Dr                   D1mr           DLmr           Dw                   D1mw           DLmw          file:function
+--------------------------------------------------------------------------------
+2,033,820,286 (21.12%)  25 ( 0.41%)  13 ( 0.51%) 951,206,723 (22.89%)     1 ( 0.01%)     0          201,500,000 (10.26%)     0            0           /home/jovyan/Proyecto-intermedio-entropia/code/random_movement.cpp:random_movement(int&, int&, int&, int&, std::vector<double, std::allocator<double> >&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_int_distribution<int>&)
+1,880,000,000 (19.53%)   4 ( 0.07%)   2 ( 0.08%) 480,000,000 (11.55%)     0              0          640,000,000 (32.59%)     0            0           /usr/include/c++/12/bits/uniform_int_dist.h:int std::uniform_int_distribution<int>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_int_distribution<int>::param_type const&)
+1,360,192,309 (14.13%)   5 ( 0.08%)   2 ( 0.08%) 720,064,103 (17.33%)     1 ( 0.01%)     0          160,064,103 ( 8.15%)     0            0           /usr/include/c++/12/bits/random.tcc:std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()()
+1,300,518,199 (13.51%)  15 ( 0.25%)   7 ( 0.27%) 599,939,977 (14.44%)     0              0           80,449,265 ( 4.10%)     0            0           /usr/include/c++/12/bits/random.tcc:std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand()
+  880,476,300 ( 9.15%)   4 ( 0.07%)   1 ( 0.04%) 400,216,500 ( 9.63%)     0              0          240,129,900 (12.23%)     0            0           /usr/include/c++/12/bits/stl_vector.h:std::vector<double, std::allocator<double> >::operator[](unsigned long)
+  800,000,000 ( 8.31%)   2 ( 0.03%)   1 ( 0.04%) 320,000,000 ( 7.70%)     0              0          240,000,000 (12.22%)     0            0           /usr/include/c++/12/bits/uniform_int_dist.h:unsigned int std::uniform_int_distribution<int>::_S_nd<unsigned long, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>, unsigned int>(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, unsigned int)
+  560,000,000 ( 5.82%)   2 ( 0.03%)   1 ( 0.04%) 320,000,000 ( 7.70%)     0              0          160,000,000 ( 8.15%)     0            0           /usr/include/c++/12/bits/uniform_int_dist.h:std::uniform_int_distribution<int>::param_type::a() const
+  520,000,000 ( 5.40%)   2 ( 0.03%)   0          200,000,000 ( 4.81%)     0              0          160,000,000 ( 8.15%)     0            0           /usr/include/c++/12/bits/uniform_int_dist.h:int std::uniform_int_distribution<int>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&)
+  280,000,000 ( 2.91%)   2 ( 0.03%)   1 ( 0.04%) 160,000,000 ( 3.85%)     0              0           80,000,000 ( 4.07%)     0            0           /usr/include/c++/12/bits/uniform_int_dist.h:std::uniform_int_distribution<int>::param_type::b() const
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: /home/jovyan/Proyecto-intermedio-entropia/code/random_movement.cpp
+--------------------------------------------------------------------------------
+Ir                   I1mr       ILmr       Dr                   D1mr       DLmr       Dw                  D1mw       DLmw       
+
+          .          .          .                    .          .          .                   .          .          .           #include "random_movement.hpp"
+          .          .          .                    .          .          .                   .          .          .           
+    900,000 ( 0.01%) 4 ( 0.07%) 1 ( 0.04%)           0          0          0             700,000 ( 0.04%) 0          0           void random_movement(int &dim, int &n_molecules, int &lattice_size, int &seed, std::vector<double> &molecules, std::mt19937 &gen, std::uniform_int_distribution<int> &direction_distribution){
+          .          .          .                    .          .          .                   .          .          .           
+          .          .          .                    .          .          .                   .          .          .               // The constant movement passage of the simulation is defined
+    200,000 ( 0.00%) 0          0              100,000 ( 0.00%) 1 ( 0.01%) 0             100,000 ( 0.01%) 0          0               double step_size = 0.005;
+          .          .          .                    .          .          .                   .          .          .               // Definition of constants for particle movement
+    200,000 ( 0.00%) 0          0                    0          0          0             200,000 ( 0.01%) 0          0               int pos_x = 0, pos_y = 1;
+    100,000 ( 0.00%) 0          0                    0          0          0             100,000 ( 0.01%) 0          0               int direction = 0;
+    700,000 ( 0.01%) 2 ( 0.03%) 1 ( 0.04%)     300,000 ( 0.01%) 0          0             100,000 ( 0.01%) 0          0               double limit = lattice_size/2.0; // Limit for a centered coordinate system
+    400,000 ( 0.00%) 0          0              200,000 ( 0.00%) 0          0             100,000 ( 0.01%) 0          0               double m_limit = -1.0*limit;
+          .          .          .                    .          .          .                   .          .          .               // For contact with the wall or position outside the box, the movement in that direction is reflected twice
+    300,000 ( 0.00%) 0          0              100,000 ( 0.00%) 0          0             100,000 ( 0.01%) 0          0               double step_backward = 2.0*step_size; 
+          .          .          .                    .          .          .                   .          .          .           
+200,600,000 ( 2.08%) 2 ( 0.03%) 0          160,300,000 ( 3.86%) 0          0             100,000 ( 0.01%) 0          0               for (int i = 0; i < n_molecules; i++){
+240,000,000 ( 2.49%) 2 ( 0.03%) 1 ( 0.04%)  80,000,000 ( 1.93%) 0          0          80,000,000 ( 4.07%) 0          0                   direction = direction_distribution(gen);
+300,013,446 ( 3.12%) 2 ( 0.03%) 1 ( 0.04%) 150,006,723 ( 3.61%) 0          0                   0          0          0                   switch (direction) {
+          .          .          .                    .          .          .                   .          .          .                       case 0: // Arriba
+140,035,756 ( 1.45%) 0          0           70,017,878 ( 1.69%) 0          0          20,005,108 ( 1.02%) 0          0                           molecules[i*dim + pos_y] += step_size;
+160,040,864 ( 1.66%) 2 ( 0.03%) 1 ( 0.04%)  70,017,878 ( 1.69%) 0          0          10,002,554 ( 0.51%) 0          0                           if (molecules[i*dim + pos_y] >= limit) molecules[i*dim + pos_y] -= step_backward;
+ 20,005,108 ( 0.21%) 0          0                    0          0          0                   0          0          0                           break;
+          .          .          .                    .          .          .                   .          .          .                       case 1: // Abajo
+139,963,698 ( 1.45%) 3 ( 0.05%) 2 ( 0.08%)  69,981,849 ( 1.68%) 0          0          19,994,814 ( 1.02%) 0          0                           molecules[i*dim + pos_y] -= step_size;
+169,955,919 ( 1.77%) 1 ( 0.02%) 1 ( 0.04%)  69,981,849 ( 1.68%) 0          0           9,997,407 ( 0.51%) 0          0                           if (molecules[i*dim + pos_y] <= m_limit) molecules[i*dim + pos_y] += step_backward;
+ 19,994,814 ( 0.21%) 0          0                    0          0          0                   0          0          0                           break;
+          .          .          .                    .          .          .                   .          .          .                       case 2: // Izquierda
+140,066,304 ( 1.45%) 1 ( 0.02%) 1 ( 0.04%)  70,033,152 ( 1.69%) 0          0          20,009,472 ( 1.02%) 0          0                           molecules[i*dim + pos_x] -= step_size;
+170,080,512 ( 1.77%) 1 ( 0.02%) 1 ( 0.04%)  70,033,152 ( 1.69%) 0          0          10,004,736 ( 0.51%) 0          0                           if (molecules[i*dim + pos_x] <= m_limit) molecules[i*dim + pos_x] += step_backward;
+ 20,009,472 ( 0.21%) 0          0                    0          0          0                   0          0          0                           break;
+          .          .          .                    .          .          .                   .          .          .                       case 3: // Derecha
+139,934,242 ( 1.45%) 3 ( 0.05%) 2 ( 0.08%)  69,967,121 ( 1.68%) 0          0          19,990,606 ( 1.02%) 0          0                           molecules[i*dim + pos_x] += step_size;
+159,924,848 ( 1.66%) 2 ( 0.03%) 1 ( 0.04%)  69,967,121 ( 1.68%) 0          0           9,995,303 ( 0.51%) 0          0                           if (molecules[i*dim + pos_x] >= limit) molecules[i*dim + pos_x] -= step_backward;
+  9,995,303 ( 0.10%) 0          0                    0          0          0                   0          0          0                           break;
+          .          .          .                    .          .          .                   .          .          .                   }
+          .          .          .                    .          .          .                   .          .          .               }   
+    400,019 ( 0.00%) 3 ( 0.05%) 3 ( 0.12%)     200,006 ( 0.00%) 0          0                   5 ( 0.00%) 0          0           }
+--------------------------------------------------------------------------------
+-- Auto-annotated source: /usr/include/c++/12/bits/stl_vector.h
+--------------------------------------------------------------------------------
+Ir                   I1mr       ILmr       Dr                   D1mr       DLmr       Dw                   D1mw       DLmw       
+
+-- line 91 ----------------------------------------
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 struct _Vector_impl_data
+          .          .          .                    .          .          .                    .          .          .                 {
+          .          .          .                    .          .          .                    .          .          .           	pointer _M_start;
+          .          .          .                    .          .          .                    .          .          .           	pointer _M_finish;
+          .          .          .                    .          .          .                    .          .          .           	pointer _M_end_of_storage;
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .           	_GLIBCXX20_CONSTEXPR
+          9 ( 0.00%) 0          0                    0          0          0                    6 ( 0.00%) 0          0           	_Vector_impl_data() _GLIBCXX_NOEXCEPT
+         18 ( 0.00%) 3 ( 0.05%) 2 ( 0.08%)           9 ( 0.00%) 0          0                    9 ( 0.00%) 1 ( 0.04%) 0           	: _M_start(), _M_finish(), _M_end_of_storage()
+          9 ( 0.00%) 0          0                    6 ( 0.00%) 0          0                    0          0          0           	{ }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .           #if __cplusplus >= 201103L
+          .          .          .                    .          .          .                    .          .          .           	_GLIBCXX20_CONSTEXPR
+          .          .          .                    .          .          .                    .          .          .           	_Vector_impl_data(_Vector_impl_data&& __x) noexcept
+          .          .          .                    .          .          .                    .          .          .           	: _M_start(__x._M_start), _M_finish(__x._M_finish),
+          .          .          .                    .          .          .                    .          .          .           	  _M_end_of_storage(__x._M_end_of_storage)
+          .          .          .                    .          .          .                    .          .          .           	{ __x._M_start = __x._M_finish = __x._M_end_of_storage = pointer(); }
+          .          .          .                    .          .          .                    .          .          .           #endif
+-- line 109 ----------------------------------------
+-- line 125 ----------------------------------------
+          .          .          .                    .          .          .                    .          .          .           	  // information used by TBAA.
+          .          .          .                    .          .          .                    .          .          .           	  _Vector_impl_data __tmp;
+          .          .          .                    .          .          .                    .          .          .           	  __tmp._M_copy_data(*this);
+          .          .          .                    .          .          .                    .          .          .           	  _M_copy_data(__x);
+          .          .          .                    .          .          .                    .          .          .           	  __x._M_copy_data(__tmp);
+          .          .          .                    .          .          .                    .          .          .           	}
+          .          .          .                    .          .          .                    .          .          .                 };
+          .          .          .                    .          .          .                    .          .          .           
+         30 ( 0.00%) 2 ( 0.03%) 0                    9 ( 0.00%) 0          0                    9 ( 0.00%) 0          0                 struct _Vector_impl
+          .          .          .                    .          .          .                    .          .          .           	: public _Tp_alloc_type, public _Vector_impl_data
+          .          .          .                    .          .          .                    .          .          .                 {
+          .          .          .                    .          .          .                    .          .          .           	_GLIBCXX20_CONSTEXPR
+          .          .          .                    .          .          .                    .          .          .           	_Vector_impl() _GLIBCXX_NOEXCEPT_IF(
+          .          .          .                    .          .          .                    .          .          .           	    is_nothrow_default_constructible<_Tp_alloc_type>::value)
+          .          .          .                    .          .          .                    .          .          .           	: _Tp_alloc_type()
+          .          .          .                    .          .          .                    .          .          .           	{ }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .           	_GLIBCXX20_CONSTEXPR
+         15 ( 0.00%) 0          0                    0          0          0                    9 ( 0.00%) 0          0           	_Vector_impl(_Tp_alloc_type const& __a) _GLIBCXX_NOEXCEPT
+         24 ( 0.00%) 3 ( 0.05%) 2 ( 0.08%)           9 ( 0.00%) 0          0                    6 ( 0.00%) 0          0           	: _Tp_alloc_type(__a)
+          9 ( 0.00%) 0          0                    6 ( 0.00%) 0          0                    0          0          0           	{ }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .           #if __cplusplus >= 201103L
+          .          .          .                    .          .          .                    .          .          .           	// Not defaulted, to enforce noexcept(true) even when
+          .          .          .                    .          .          .                    .          .          .           	// !is_nothrow_move_constructible<_Tp_alloc_type>.
+          .          .          .                    .          .          .                    .          .          .           	_GLIBCXX20_CONSTEXPR
+          .          .          .                    .          .          .                    .          .          .           	_Vector_impl(_Vector_impl&& __x) noexcept
+          .          .          .                    .          .          .                    .          .          .           	: _Tp_alloc_type(std::move(__x)), _Vector_impl_data(std::move(__x))
+          .          .          .                    .          .          .                    .          .          .           	{ }
+-- line 153 ----------------------------------------
+-- line 290 ----------------------------------------
+          .          .          .                    .          .          .                    .          .          .           #endif // _GLIBCXX_SANITIZE_STD_ALLOCATOR && _GLIBCXX_SANITIZE_VECTOR
+          .          .          .                    .          .          .                    .          .          .                 };
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .               public:
+          .          .          .                    .          .          .                    .          .          .                 typedef _Alloc allocator_type;
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 _GLIBCXX20_CONSTEXPR
+          .          .          .                    .          .          .                    .          .          .                 _Tp_alloc_type&
+        468 ( 0.00%) 6 ( 0.10%) 2 ( 0.08%)           0          0          0                  312 ( 0.00%) 0          0                 _M_get_Tp_allocator() _GLIBCXX_NOEXCEPT
+        468 ( 0.00%) 0          0                  468 ( 0.00%) 0          0                    0          0          0                 { return this->_M_impl; }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 _GLIBCXX20_CONSTEXPR
+          .          .          .                    .          .          .                    .          .          .                 const _Tp_alloc_type&
+          .          .          .                    .          .          .                    .          .          .                 _M_get_Tp_allocator() const _GLIBCXX_NOEXCEPT
+          .          .          .                    .          .          .                    .          .          .                 { return this->_M_impl; }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 _GLIBCXX20_CONSTEXPR
+          .          .          .                    .          .          .                    .          .          .                 allocator_type
+-- line 307 ----------------------------------------
+-- line 322 ----------------------------------------
+          .          .          .                    .          .          .                    .          .          .           #if !_GLIBCXX_INLINE_VERSION
+          .          .          .                    .          .          .                    .          .          .                 _GLIBCXX20_CONSTEXPR
+          .          .          .                    .          .          .                    .          .          .                 _Vector_base(size_t __n)
+          .          .          .                    .          .          .                    .          .          .                 : _M_impl()
+          .          .          .                    .          .          .                    .          .          .                 { _M_create_storage(__n); }
+          .          .          .                    .          .          .                    .          .          .           #endif
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 _GLIBCXX20_CONSTEXPR
+         21 ( 0.00%) 3 ( 0.05%) 2 ( 0.08%)           0          0          0                   15 ( 0.00%) 0          0                 _Vector_base(size_t __n, const allocator_type& __a)
+         15 ( 0.00%) 0          0                    6 ( 0.00%) 0          0                    3 ( 0.00%) 0          0                 : _M_impl(__a)
+         27 ( 0.00%) 3 ( 0.05%) 2 ( 0.08%)          15 ( 0.00%) 0          0                    3 ( 0.00%) 0          0                 { _M_create_storage(__n); }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .           #if __cplusplus >= 201103L
+          .          .          .                    .          .          .                    .          .          .                 _Vector_base(_Vector_base&&) = default;
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 // Kept for ABI compatibility.
+          .          .          .                    .          .          .                    .          .          .           # if !_GLIBCXX_INLINE_VERSION
+          .          .          .                    .          .          .                    .          .          .                 _GLIBCXX20_CONSTEXPR
+          .          .          .                    .          .          .                    .          .          .                 _Vector_base(_Tp_alloc_type&& __a) noexcept
+-- line 340 ----------------------------------------
+-- line 356 ----------------------------------------
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 _GLIBCXX20_CONSTEXPR
+          .          .          .                    .          .          .                    .          .          .                 _Vector_base(const allocator_type& __a, _Vector_base&& __x)
+          .          .          .                    .          .          .                    .          .          .                 : _M_impl(_Tp_alloc_type(__a), std::move(__x._M_impl))
+          .          .          .                    .          .          .                    .          .          .                 { }
+          .          .          .                    .          .          .                    .          .          .           #endif
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 _GLIBCXX20_CONSTEXPR
+         12 ( 0.00%) 2 ( 0.03%) 0                    0          0          0                    6 ( 0.00%) 0          0                 ~_Vector_base() _GLIBCXX_NOEXCEPT
+          .          .          .                    .          .          .                    .          .          .                 {
+         21 ( 0.00%) 2 ( 0.03%) 0                    9 ( 0.00%) 0          0                    3 ( 0.00%) 0          0           	_M_deallocate(_M_impl._M_start,
+         21 ( 0.00%) 0          0                   12 ( 0.00%) 0          0                    0          0          0           		      _M_impl._M_end_of_storage - _M_impl._M_start);
+         18 ( 0.00%) 0          0                    9 ( 0.00%) 0          0                    3 ( 0.00%) 0          0                 }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .               public:
+          .          .          .                    .          .          .                    .          .          .                 _Vector_impl _M_impl;
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 _GLIBCXX20_CONSTEXPR
+          .          .          .                    .          .          .                    .          .          .                 pointer
+         15 ( 0.00%) 0          0                    0          0          0                    9 ( 0.00%) 0          0                 _M_allocate(size_t __n)
+          .          .          .                    .          .          .                    .          .          .                 {
+          .          .          .                    .          .          .                    .          .          .           	typedef __gnu_cxx::__alloc_traits<_Tp_alloc_type> _Tr;
+         24 ( 0.00%) 3 ( 0.05%) 2 ( 0.08%)           9 ( 0.00%) 0          0                    3 ( 0.00%) 0          0           	return __n != 0 ? _Tr::allocate(_M_impl, __n) : pointer();
+          6 ( 0.00%) 0          0                    6 ( 0.00%) 0          0                    0          0          0                 }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 _GLIBCXX20_CONSTEXPR
+          .          .          .                    .          .          .                    .          .          .                 void
+         18 ( 0.00%) 4 ( 0.07%) 0                    0          0          0                   12 ( 0.00%) 0          0                 _M_deallocate(pointer __p, size_t __n)
+          .          .          .                    .          .          .                    .          .          .                 {
+          .          .          .                    .          .          .                    .          .          .           	typedef __gnu_cxx::__alloc_traits<_Tp_alloc_type> _Tr;
+          6 ( 0.00%) 0          0                    3 ( 0.00%) 0          0                    0          0          0           	if (__p)
+         18 ( 0.00%) 0          0                    9 ( 0.00%) 0          0                    3 ( 0.00%) 0          0           	  _Tr::deallocate(_M_impl, __p, __n);
+          9 ( 0.00%) 0          0                    6 ( 0.00%) 0          0                    0          0          0                 }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .               protected:
+          .          .          .                    .          .          .                    .          .          .                 _GLIBCXX20_CONSTEXPR
+          .          .          .                    .          .          .                    .          .          .                 void
+         15 ( 0.00%) 0          0                    0          0          0                    9 ( 0.00%) 0          0                 _M_create_storage(size_t __n)
+          .          .          .                    .          .          .                    .          .          .                 {
+         21 ( 0.00%) 3 ( 0.05%) 2 ( 0.08%)           9 ( 0.00%) 0          0                    6 ( 0.00%) 0          0           	this->_M_impl._M_start = this->_M_allocate(__n);
+         12 ( 0.00%) 0          0                    9 ( 0.00%) 0          0                    3 ( 0.00%) 0          0           	this->_M_impl._M_finish = this->_M_impl._M_start;
+         21 ( 0.00%) 0          0                   12 ( 0.00%) 0          0                    3 ( 0.00%) 0          0           	this->_M_impl._M_end_of_storage = this->_M_impl._M_start + __n;
+          9 ( 0.00%) 0          0                    6 ( 0.00%) 0          0                    0          0          0                 }
+          .          .          .                    .          .          .                    .          .          .               };
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .             /**
+          .          .          .                    .          .          .                    .          .          .              *  @brief A standard container which offers fixed time access to
+          .          .          .                    .          .          .                    .          .          .              *  individual elements in any order.
+          .          .          .                    .          .          .                    .          .          .              *
+          .          .          .                    .          .          .                    .          .          .              *  @ingroup sequences
+          .          .          .                    .          .          .                    .          .          .              *
+-- line 406 ----------------------------------------
+-- line 556 ----------------------------------------
+          .          .          .                    .          .          .                    .          .          .                  *  @brief  Creates a %vector with copies of an exemplar element.
+          .          .          .                    .          .          .                    .          .          .                  *  @param  __n  The number of elements to initially create.
+          .          .          .                    .          .          .                    .          .          .                  *  @param  __value  An element to copy.
+          .          .          .                    .          .          .                    .          .          .                  *  @param  __a  An allocator.
+          .          .          .                    .          .          .                    .          .          .                  *
+          .          .          .                    .          .          .                    .          .          .                  *  This constructor fills the %vector with @a __n copies of @a __value.
+          .          .          .                    .          .          .                    .          .          .                  */
+          .          .          .                    .          .          .                    .          .          .                 _GLIBCXX20_CONSTEXPR
+         24 ( 0.00%) 0          0                    0          0          0                   18 ( 0.00%) 0          0                 vector(size_type __n, const value_type& __value,
+          .          .          .                    .          .          .                    .          .          .           	     const allocator_type& __a = allocator_type())
+         36 ( 0.00%) 3 ( 0.05%) 2 ( 0.08%)          12 ( 0.00%) 0          0                    6 ( 0.00%) 0          0                 : _Base(_S_check_init_len(__n, __a), __a)
+         30 ( 0.00%) 3 ( 0.05%) 2 ( 0.08%)          18 ( 0.00%) 0          0                    3 ( 0.00%) 0          0                 { _M_fill_initialize(__n, __value); }
+          .          .          .                    .          .          .                    .          .          .           #else
+          .          .          .                    .          .          .                    .          .          .                 /**
+          .          .          .                    .          .          .                    .          .          .                  *  @brief  Creates a %vector with copies of an exemplar element.
+          .          .          .                    .          .          .                    .          .          .                  *  @param  __n  The number of elements to initially create.
+          .          .          .                    .          .          .                    .          .          .                  *  @param  __value  An element to copy.
+          .          .          .                    .          .          .                    .          .          .                  *  @param  __a  An allocator.
+          .          .          .                    .          .          .                    .          .          .                  *
+          .          .          .                    .          .          .                    .          .          .                  *  This constructor fills the %vector with @a __n copies of @a __value.
+-- line 575 ----------------------------------------
+-- line 720 ----------------------------------------
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 /**
+          .          .          .                    .          .          .                    .          .          .                  *  The dtor only erases the elements, and note that if the
+          .          .          .                    .          .          .                    .          .          .                  *  elements themselves are pointers, the pointed-to memory is
+          .          .          .                    .          .          .                    .          .          .                  *  not touched in any way.  Managing the pointer is the user's
+          .          .          .                    .          .          .                    .          .          .                  *  responsibility.
+          .          .          .                    .          .          .                    .          .          .                  */
+          .          .          .                    .          .          .                    .          .          .                 _GLIBCXX20_CONSTEXPR
+         12 ( 0.00%) 2 ( 0.03%) 0                    0          0          0                    6 ( 0.00%) 0          0                 ~vector() _GLIBCXX_NOEXCEPT
+          .          .          .                    .          .          .                    .          .          .                 {
+         21 ( 0.00%) 2 ( 0.03%) 0                   12 ( 0.00%) 0          0                    3 ( 0.00%) 0          0           	std::_Destroy(this->_M_impl._M_start, this->_M_impl._M_finish,
+         12 ( 0.00%) 0          0                    3 ( 0.00%) 0          0                    3 ( 0.00%) 0          0           		      _M_get_Tp_allocator());
+          .          .          .                    .          .          .                    .          .          .           	_GLIBCXX_ASAN_ANNOTATE_BEFORE_DEALLOC;
+         18 ( 0.00%) 0          0                    9 ( 0.00%) 0          0                    3 ( 0.00%) 0          0                 }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 /**
+          .          .          .                    .          .          .                    .          .          .                  *  @brief  %Vector assignment operator.
+          .          .          .                    .          .          .                    .          .          .                  *  @param  __x  A %vector of identical element and allocator types.
+          .          .          .                    .          .          .                    .          .          .                  *
+          .          .          .                    .          .          .                    .          .          .                  *  All the elements of @a __x are copied, but any unused capacity in
+          .          .          .                    .          .          .                    .          .          .                  *  @a __x will not be copied.
+          .          .          .                    .          .          .                    .          .          .                  *
+-- line 741 ----------------------------------------
+-- line 880 ----------------------------------------
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 /**
+          .          .          .                    .          .          .                    .          .          .                  *  Returns a read/write iterator that points one past the last
+          .          .          .                    .          .          .                    .          .          .                  *  element in the %vector.  Iteration is done in ordinary
+          .          .          .                    .          .          .                    .          .          .                  *  element order.
+          .          .          .                    .          .          .                    .          .          .                  */
+          .          .          .                    .          .          .                    .          .          .                 _GLIBCXX_NODISCARD _GLIBCXX20_CONSTEXPR
+          .          .          .                    .          .          .                    .          .          .                 iterator
+        400 ( 0.00%) 2 ( 0.03%) 1 ( 0.04%)           0          0          0                  200 ( 0.00%) 0          0                 end() _GLIBCXX_NOEXCEPT
+        900 ( 0.00%) 2 ( 0.03%) 1 ( 0.04%)         400 ( 0.00%) 0          0                  100 ( 0.00%) 0          0                 { return iterator(this->_M_impl._M_finish); }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 /**
+          .          .          .                    .          .          .                    .          .          .                  *  Returns a read-only (constant) iterator that points one past
+          .          .          .                    .          .          .                    .          .          .                  *  the last element in the %vector.  Iteration is done in
+          .          .          .                    .          .          .                    .          .          .                  *  ordinary element order.
+          .          .          .                    .          .          .                    .          .          .                  */
+          .          .          .                    .          .          .                    .          .          .                 _GLIBCXX_NODISCARD _GLIBCXX20_CONSTEXPR
+          .          .          .                    .          .          .                    .          .          .                 const_iterator
+-- line 897 ----------------------------------------
+-- line 979 ----------------------------------------
+          .          .          .                    .          .          .                    .          .          .                 crend() const noexcept
+          .          .          .                    .          .          .                    .          .          .                 { return const_reverse_iterator(begin()); }
+          .          .          .                    .          .          .                    .          .          .           #endif
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 // [23.2.4.2] capacity
+          .          .          .                    .          .          .                    .          .          .                 /**  Returns the number of elements in the %vector.  */
+          .          .          .                    .          .          .                    .          .          .                 _GLIBCXX_NODISCARD _GLIBCXX20_CONSTEXPR
+          .          .          .                    .          .          .                    .          .          .                 size_type
+        300 ( 0.00%) 0          0                    0          0          0                  200 ( 0.00%) 0          0                 size() const _GLIBCXX_NOEXCEPT
+        900 ( 0.00%) 0          0                  600 ( 0.00%) 0          0                    0          0          0                 { return size_type(this->_M_impl._M_finish - this->_M_impl._M_start); }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 /**  Returns the size() of the largest possible %vector.  */
+          .          .          .                    .          .          .                    .          .          .                 _GLIBCXX_NODISCARD _GLIBCXX20_CONSTEXPR
+          .          .          .                    .          .          .                    .          .          .                 size_type
+          .          .          .                    .          .          .                    .          .          .                 max_size() const _GLIBCXX_NOEXCEPT
+          .          .          .                    .          .          .                    .          .          .                 { return _S_max_size(_M_get_Tp_allocator()); }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .           #if __cplusplus >= 201103L
+-- line 996 ----------------------------------------
+-- line 1021 ----------------------------------------
+          .          .          .                    .          .          .                    .          .          .                  *  This function will %resize the %vector to the specified
+          .          .          .                    .          .          .                    .          .          .                  *  number of elements.  If the number is smaller than the
+          .          .          .                    .          .          .                    .          .          .                  *  %vector's current size the %vector is truncated, otherwise
+          .          .          .                    .          .          .                    .          .          .                  *  the %vector is extended and new elements are populated with
+          .          .          .                    .          .          .                    .          .          .                  *  given data.
+          .          .          .                    .          .          .                    .          .          .                  */
+          .          .          .                    .          .          .                    .          .          .                 _GLIBCXX20_CONSTEXPR
+          .          .          .                    .          .          .                    .          .          .                 void
+        350 ( 0.00%) 0          0                    0          0          0                  250 ( 0.00%) 0          0                 resize(size_type __new_size, const value_type& __x)
+          .          .          .                    .          .          .                    .          .          .                 {
+        350 ( 0.00%) 0          0                  100 ( 0.00%) 0          0                   50 ( 0.00%) 0          0           	if (__new_size > size())
+        800 ( 0.00%) 2 ( 0.03%) 1 ( 0.04%)         250 ( 0.00%) 0          0                  150 ( 0.00%) 0          0           	  _M_fill_insert(end(), __new_size - size(), __x);
+          .          .          .                    .          .          .                    .          .          .           	else if (__new_size < size())
+          .          .          .                    .          .          .                    .          .          .           	  _M_erase_at_end(this->_M_impl._M_start + __new_size);
+        250 ( 0.00%) 0          0                  150 ( 0.00%) 0          0                    0          0          0                 }
+          .          .          .                    .          .          .                    .          .          .           #else
+          .          .          .                    .          .          .                    .          .          .                 /**
+          .          .          .                    .          .          .                    .          .          .                  *  @brief  Resizes the %vector to the specified number of elements.
+          .          .          .                    .          .          .                    .          .          .                  *  @param  __new_size  Number of elements the %vector should contain.
+          .          .          .                    .          .          .                    .          .          .                  *  @param  __x  Data with which new elements should be populated.
+          .          .          .                    .          .          .                    .          .          .                  *
+          .          .          .                    .          .          .                    .          .          .                  *  This function will %resize the %vector to the specified
+          .          .          .                    .          .          .                    .          .          .                  *  number of elements.  If the number is smaller than the
+-- line 1043 ----------------------------------------
+-- line 1113 ----------------------------------------
+          .          .          .                    .          .          .                    .          .          .                  *
+          .          .          .                    .          .          .                    .          .          .                  *  This operator allows for easy, array-style, data access.
+          .          .          .                    .          .          .                    .          .          .                  *  Note that data access with this operator is unchecked and
+          .          .          .                    .          .          .                    .          .          .                  *  out_of_range lookups are not defined. (For checked lookups
+          .          .          .                    .          .          .                    .          .          .                  *  see at().)
+          .          .          .                    .          .          .                    .          .          .                  */
+          .          .          .                    .          .          .                    .          .          .                 _GLIBCXX_NODISCARD _GLIBCXX20_CONSTEXPR
+          .          .          .                    .          .          .                    .          .          .                 reference
+320,266,000 ( 3.33%) 1 ( 0.02%) 1 ( 0.04%)           0          0          0          240,199,500 (12.23%) 0          0                 operator[](size_type __n) _GLIBCXX_NOEXCEPT
+          .          .          .                    .          .          .                    .          .          .                 {
+          .          .          .                    .          .          .                    .          .          .           	__glibcxx_requires_subscript(__n);
+400,332,500 ( 4.16%) 3 ( 0.05%) 0          240,199,500 ( 5.78%) 0          0                    0          0          0           	return *(this->_M_impl._M_start + __n);
+160,133,000 ( 1.66%) 0          0          160,133,000 ( 3.85%) 0          0                    0          0          0                 }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 /**
+          .          .          .                    .          .          .                    .          .          .                  *  @brief  Subscript access to the data contained in the %vector.
+          .          .          .                    .          .          .                    .          .          .                  *  @param __n The index of the element for which data should be
+          .          .          .                    .          .          .                    .          .          .                  *  accessed.
+          .          .          .                    .          .          .                    .          .          .                  *  @return  Read-only (constant) reference to data.
+          .          .          .                    .          .          .                    .          .          .                  *
+          .          .          .                    .          .          .                    .          .          .                  *  This operator allows for easy, array-style, data access.
+-- line 1133 ----------------------------------------
+-- line 1592 ----------------------------------------
+          .          .          .                    .          .          .                    .          .          .                 /**
+          .          .          .                    .          .          .                    .          .          .                  *  Erases all the elements.  Note that this function only erases the
+          .          .          .                    .          .          .                    .          .          .                  *  elements, and that if the elements themselves are pointers, the
+          .          .          .                    .          .          .                    .          .          .                  *  pointed-to memory is not touched in any way.  Managing the pointer is
+          .          .          .                    .          .          .                    .          .          .                  *  the user's responsibility.
+          .          .          .                    .          .          .                    .          .          .                  */
+          .          .          .                    .          .          .                    .          .          .                 _GLIBCXX20_CONSTEXPR
+          .          .          .                    .          .          .                    .          .          .                 void
+        200 ( 0.00%) 1 ( 0.02%) 0                    0          0          0                  100 ( 0.00%) 0          0                 clear() _GLIBCXX_NOEXCEPT
+        450 ( 0.00%) 2 ( 0.03%) 1 ( 0.04%)         250 ( 0.00%) 0          0                   50 ( 0.00%) 0          0                 { _M_erase_at_end(this->_M_impl._M_start); }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .               protected:
+          .          .          .                    .          .          .                    .          .          .                 /**
+          .          .          .                    .          .          .                    .          .          .                  *  Memory expansion handler.  Uses the member allocation function to
+          .          .          .                    .          .          .                    .          .          .                  *  obtain @a n bytes of memory, and then copies [first,last) into it.
+          .          .          .                    .          .          .                    .          .          .                  */
+          .          .          .                    .          .          .                    .          .          .                 template<typename _ForwardIterator>
+          .          .          .                    .          .          .                    .          .          .           	_GLIBCXX20_CONSTEXPR
+-- line 1609 ----------------------------------------
+-- line 1691 ----------------------------------------
+          .          .          .                    .          .          .                    .          .          .           					this->_M_impl._M_start,
+          .          .          .                    .          .          .                    .          .          .           					_M_get_Tp_allocator());
+          .          .          .                    .          .          .                    .          .          .           	}
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 // Called by the first initialize_dispatch above and by the
+          .          .          .                    .          .          .                    .          .          .                 // vector(n,value,a) constructor.
+          .          .          .                    .          .          .                    .          .          .                 _GLIBCXX20_CONSTEXPR
+          .          .          .                    .          .          .                    .          .          .                 void
+         18 ( 0.00%) 3 ( 0.05%) 2 ( 0.08%)           0          0          0                   12 ( 0.00%) 0          0                 _M_fill_initialize(size_type __n, const value_type& __value)
+          .          .          .                    .          .          .                    .          .          .                 {
+          6 ( 0.00%) 0          0                    3 ( 0.00%) 0          0                    3 ( 0.00%) 0          0           	this->_M_impl._M_finish =
+         18 ( 0.00%) 0          0                   12 ( 0.00%) 0          0                    3 ( 0.00%) 0          0           	  std::__uninitialized_fill_n_a(this->_M_impl._M_start, __n, __value,
+         12 ( 0.00%) 0          0                    3 ( 0.00%) 0          0                    3 ( 0.00%) 0          0           					_M_get_Tp_allocator());
+          9 ( 0.00%) 0          0                    6 ( 0.00%) 0          0                    0          0          0                 }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .           #if __cplusplus >= 201103L
+          .          .          .                    .          .          .                    .          .          .                 // Called by the vector(n) constructor.
+          .          .          .                    .          .          .                    .          .          .                 _GLIBCXX20_CONSTEXPR
+          .          .          .                    .          .          .                    .          .          .                 void
+          .          .          .                    .          .          .                    .          .          .                 _M_default_initialize(size_type __n)
+          .          .          .                    .          .          .                    .          .          .                 {
+          .          .          .                    .          .          .                    .          .          .           	this->_M_impl._M_finish =
+-- line 1712 ----------------------------------------
+-- line 1820 ----------------------------------------
+          .          .          .                    .          .          .                    .          .          .                 _M_realloc_insert(iterator __position, const value_type& __x);
+          .          .          .                    .          .          .                    .          .          .           #else
+          .          .          .                    .          .          .                    .          .          .                 // A value_type object constructed with _Alloc_traits::construct()
+          .          .          .                    .          .          .                    .          .          .                 // and destroyed with _Alloc_traits::destroy().
+          .          .          .                    .          .          .                    .          .          .                 struct _Temporary_value
+          .          .          .                    .          .          .                    .          .          .                 {
+          .          .          .                    .          .          .                    .          .          .           	template<typename... _Args>
+          .          .          .                    .          .          .                    .          .          .           	  _GLIBCXX20_CONSTEXPR explicit
+        700 ( 0.00%) 0          0                  150 ( 0.00%) 0          0                  350 ( 0.00%) 0          0           	  _Temporary_value(vector* __vec, _Args&&... __args) : _M_this(__vec)
+          .          .          .                    .          .          .                    .          .          .           	  {
+        700 ( 0.00%) 2 ( 0.03%) 1 ( 0.04%)         200 ( 0.00%) 0          0                  150 ( 0.00%) 0          0           	    _Alloc_traits::construct(_M_this->_M_impl, _M_ptr(),
+          .          .          .                    .          .          .                    .          .          .           				     std::forward<_Args>(__args)...);
+        200 ( 0.00%) 0          0                  150 ( 0.00%) 0          0                    0          0          0           	  }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .           	_GLIBCXX20_CONSTEXPR
+        200 ( 0.00%) 0          0                    0          0          0                  100 ( 0.00%) 0          0           	~_Temporary_value()
+        800 ( 0.00%) 0          0                  300 ( 0.00%) 0          0                  150 ( 0.00%) 0          0           	{ _Alloc_traits::destroy(_M_this->_M_impl, _M_ptr()); }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .           	_GLIBCXX20_CONSTEXPR value_type&
+        350 ( 0.00%) 4 ( 0.07%) 2 ( 0.08%)         150 ( 0.00%) 0          0                  100 ( 0.00%) 0          0           	_M_val() noexcept { return _M_storage._M_val; }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 private:
+          .          .          .                    .          .          .                    .          .          .           	_GLIBCXX20_CONSTEXPR _Tp*
+      1,000 ( 0.00%) 0          0                  300 ( 0.00%) 0          0                  300 ( 0.00%) 0          0           	_M_ptr() noexcept { return std::__addressof(_M_storage._M_val); }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .           	union _Storage
+          .          .          .                    .          .          .                    .          .          .           	{
+        400 ( 0.00%) 0          0                  150 ( 0.00%) 0          0                  150 ( 0.00%) 0          0           	  constexpr _Storage() : _M_byte() { }
+        300 ( 0.00%) 0          0                  100 ( 0.00%) 0          0                  100 ( 0.00%) 0          0           	  _GLIBCXX20_CONSTEXPR ~_Storage() { }
+          .          .          .                    .          .          .                    .          .          .           	  _Storage& operator=(const _Storage&) = delete;
+          .          .          .                    .          .          .                    .          .          .           	  unsigned char _M_byte;
+          .          .          .                    .          .          .                    .          .          .           	  _Tp _M_val;
+          .          .          .                    .          .          .                    .          .          .           	};
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .           	vector*  _M_this;
+          .          .          .                    .          .          .                    .          .          .           	_Storage _M_storage;
+          .          .          .                    .          .          .                    .          .          .                 };
+-- line 1856 ----------------------------------------
+-- line 1894 ----------------------------------------
+          .          .          .                    .          .          .                    .          .          .           	  __throw_length_error(__N(__s));
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .           	const size_type __len = size() + (std::max)(size(), __n);
+          .          .          .                    .          .          .                    .          .          .           	return (__len < size() || __len > max_size()) ? max_size() : __len;
+          .          .          .                    .          .          .                    .          .          .                 }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 // Called by constructors to check initial size.
+          .          .          .                    .          .          .                    .          .          .                 static _GLIBCXX20_CONSTEXPR size_type
+         18 ( 0.00%) 3 ( 0.05%) 2 ( 0.08%)           0          0          0                   12 ( 0.00%) 0          0                 _S_check_init_len(size_type __n, const allocator_type& __a)
+          .          .          .                    .          .          .                    .          .          .                 {
+         45 ( 0.00%) 0          0                    6 ( 0.00%) 0          0                    9 ( 0.00%) 0          0           	if (__n > _S_max_size(_Tp_alloc_type(__a)))
+          .          .          .                    .          .          .                    .          .          .           	  __throw_length_error(
+          .          .          .                    .          .          .                    .          .          .           	      __N("cannot create std::vector larger than max_size()"));
+          3 ( 0.00%) 3 ( 0.05%) 2 ( 0.08%)           3 ( 0.00%) 0          0                    0          0          0           	return __n;
+          9 ( 0.00%) 0          0                    9 ( 0.00%) 0          0                    0          0          0                 }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 static _GLIBCXX20_CONSTEXPR size_type
+         12 ( 0.00%) 2 ( 0.03%) 1 ( 0.04%)           0          0          0                    6 ( 0.00%) 0          0                 _S_max_size(const _Tp_alloc_type& __a) _GLIBCXX_NOEXCEPT
+          .          .          .                    .          .          .                    .          .          .                 {
+          .          .          .                    .          .          .                    .          .          .           	// std::distance(begin(), end()) cannot be greater than PTRDIFF_MAX,
+          .          .          .                    .          .          .                    .          .          .           	// and realistically we can't store more than PTRDIFF_MAX/sizeof(T)
+          .          .          .                    .          .          .                    .          .          .           	// (even if std::allocator_traits::max_size says we can).
+          6 ( 0.00%) 0          0                    0          0          0                    3 ( 0.00%) 0          0           	const size_t __diffmax
+          .          .          .                    .          .          .                    .          .          .           	  = __gnu_cxx::__numeric_traits<ptrdiff_t>::__max / sizeof(_Tp);
+         12 ( 0.00%) 0          0                    3 ( 0.00%) 0          0                    6 ( 0.00%) 0          0           	const size_t __allocmax = _Alloc_traits::max_size(__a);
+         18 ( 0.00%) 0          0                    3 ( 0.00%) 0          0                    3 ( 0.00%) 0          0           	return (std::min)(__diffmax, __allocmax);
+          6 ( 0.00%) 0          0                    6 ( 0.00%) 0          0                    0          0          0                 }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 // Internal erase functions follow.
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 // Called by erase(q1,q2), clear(), resize(), _M_fill_assign,
+          .          .          .                    .          .          .                    .          .          .                 // _M_assign_aux.
+          .          .          .                    .          .          .                    .          .          .                 _GLIBCXX20_CONSTEXPR
+          .          .          .                    .          .          .                    .          .          .                 void
+        250 ( 0.00%) 4 ( 0.07%) 2 ( 0.08%)           0          0          0                  150 ( 0.00%) 0          0                 _M_erase_at_end(pointer __pos) _GLIBCXX_NOEXCEPT
+          .          .          .                    .          .          .                    .          .          .                 {
+        350 ( 0.00%) 0          0                  200 ( 0.00%) 0          0                   50 ( 0.00%) 0          0           	if (size_type __n = this->_M_impl._M_finish - __pos)
+          .          .          .                    .          .          .                    .          .          .           	  {
+        300 ( 0.00%) 2 ( 0.03%) 1 ( 0.04%)         150 ( 0.00%) 0          0                   50 ( 0.00%) 0          0           	    std::_Destroy(__pos, this->_M_impl._M_finish,
+        200 ( 0.00%) 0          0                   50 ( 0.00%) 0          0                   50 ( 0.00%) 0          0           			  _M_get_Tp_allocator());
+        150 ( 0.00%) 0          0                  100 ( 0.00%) 0          0                   50 ( 0.00%) 0          0           	    this->_M_impl._M_finish = __pos;
+          .          .          .                    .          .          .                    .          .          .           	    _GLIBCXX_ASAN_ANNOTATE_SHRINK(__n);
+          .          .          .                    .          .          .                    .          .          .           	  }
+        150 ( 0.00%) 0          0                  100 ( 0.00%) 0          0                    0          0          0                 }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 _GLIBCXX20_CONSTEXPR
+          .          .          .                    .          .          .                    .          .          .                 iterator
+          .          .          .                    .          .          .                    .          .          .                 _M_erase(iterator __position);
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 _GLIBCXX20_CONSTEXPR
+          .          .          .                    .          .          .                    .          .          .                 iterator
+          .          .          .                    .          .          .                    .          .          .                 _M_erase(iterator __first, iterator __last);
+-- line 1945 ----------------------------------------
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: /usr/include/c++/12/bits/uniform_int_dist.h
+--------------------------------------------------------------------------------
+Ir                   I1mr       ILmr       Dr                   D1mr       DLmr       Dw                   D1mw       DLmw       
+
+-- line 85 ----------------------------------------
+          .          .          .                    .          .          .                    .          .          .                 /** Parameter type. */
+          .          .          .                    .          .          .                    .          .          .                 struct param_type
+          .          .          .                    .          .          .                    .          .          .                 {
+          .          .          .                    .          .          .                    .          .          .           	typedef uniform_int_distribution<_IntType> distribution_type;
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .           	param_type() : param_type(0) { }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .           	explicit
+          6 ( 0.00%) 1 ( 0.02%) 1 ( 0.04%)           0          0          0                    4 ( 0.00%) 0          0           	param_type(_IntType __a,
+          .          .          .                    .          .          .                    .          .          .           		   _IntType __b = __gnu_cxx::__int_traits<_IntType>::__max)
+          6 ( 0.00%) 0          0                    4 ( 0.00%) 0          0                    2 ( 0.00%) 0          0           	: _M_a(__a), _M_b(__b)
+          .          .          .                    .          .          .                    .          .          .           	{
+          5 ( 0.00%) 0          0                    0          0          0                    1 ( 0.00%) 0          0           	  __glibcxx_assert(_M_a <= _M_b);
+          3 ( 0.00%) 0          0                    2 ( 0.00%) 0          0                    0          0          0           	}
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .           	result_type
+240,000,000 ( 2.49%) 0          0                    0          0          0          160,000,000 ( 8.15%) 0          0           	a() const
+320,000,000 ( 3.32%) 2 ( 0.03%) 1 ( 0.04%) 320,000,000 ( 7.70%) 0          0                    0          0          0           	{ return _M_a; }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .           	result_type
+120,000,000 ( 1.25%) 2 ( 0.03%) 1 ( 0.04%)           0          0          0           80,000,000 ( 4.07%) 0          0           	b() const
+160,000,000 ( 1.66%) 0          0          160,000,000 ( 3.85%) 0          0                    0          0          0           	{ return _M_b; }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .           	friend bool
+          .          .          .                    .          .          .                    .          .          .           	operator==(const param_type& __p1, const param_type& __p2)
+          .          .          .                    .          .          .                    .          .          .           	{ return __p1._M_a == __p2._M_a && __p1._M_b == __p2._M_b; }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .           	friend bool
+          .          .          .                    .          .          .                    .          .          .           	operator!=(const param_type& __p1, const param_type& __p2)
+          .          .          .                    .          .          .                    .          .          .           	{ return !(__p1 == __p2); }
+-- line 114 ----------------------------------------
+-- line 123 ----------------------------------------
+          .          .          .                    .          .          .                    .          .          .                  * @brief Constructs a uniform distribution object.
+          .          .          .                    .          .          .                    .          .          .                  */
+          .          .          .                    .          .          .                    .          .          .                 uniform_int_distribution() : uniform_int_distribution(0) { }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 /**
+          .          .          .                    .          .          .                    .          .          .                  * @brief Constructs a uniform distribution object.
+          .          .          .                    .          .          .                    .          .          .                  */
+          .          .          .                    .          .          .                    .          .          .                 explicit
+          6 ( 0.00%) 0          0                    0          0          0                    4 ( 0.00%) 0          0                 uniform_int_distribution(_IntType __a,
+          .          .          .                    .          .          .                    .          .          .           			       _IntType __b
+          .          .          .                    .          .          .                    .          .          .           				 = __gnu_cxx::__int_traits<_IntType>::__max)
+          6 ( 0.00%) 0          0                    3 ( 0.00%) 0          0                    1 ( 0.00%) 0          0                 : _M_param(__a, __b)
+          3 ( 0.00%) 0          0                    2 ( 0.00%) 0          0                    0          0          0                 { }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 explicit
+          .          .          .                    .          .          .                    .          .          .                 uniform_int_distribution(const param_type& __p)
+          .          .          .                    .          .          .                    .          .          .                 : _M_param(__p)
+          .          .          .                    .          .          .                    .          .          .                 { }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 /**
+          .          .          .                    .          .          .                    .          .          .                  * @brief Resets the distribution state.
+-- line 143 ----------------------------------------
+-- line 184 ----------------------------------------
+          .          .          .                    .          .          .                    .          .          .                 max() const
+          .          .          .                    .          .          .                    .          .          .                 { return this->b(); }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 /**
+          .          .          .                    .          .          .                    .          .          .                  * @brief Generating functions.
+          .          .          .                    .          .          .                    .          .          .                  */
+          .          .          .                    .          .          .                    .          .          .                 template<typename _UniformRandomBitGenerator>
+          .          .          .                    .          .          .                    .          .          .           	result_type
+200,000,000 ( 2.08%) 2 ( 0.03%) 0                    0          0          0          120,000,000 ( 6.11%) 0          0           	operator()(_UniformRandomBitGenerator& __urng)
+320,000,000 ( 3.32%) 0          0          200,000,000 ( 4.81%) 0          0           40,000,000 ( 2.04%) 0          0                   { return this->operator()(__urng, _M_param); }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 template<typename _UniformRandomBitGenerator>
+          .          .          .                    .          .          .                    .          .          .           	result_type
+          .          .          .                    .          .          .                    .          .          .           	operator()(_UniformRandomBitGenerator& __urng,
+          .          .          .                    .          .          .                    .          .          .           		   const param_type& __p);
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 template<typename _ForwardIterator,
+          .          .          .                    .          .          .                    .          .          .           	       typename _UniformRandomBitGenerator>
+-- line 201 ----------------------------------------
+-- line 238 ----------------------------------------
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 param_type _M_param;
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .                 // Lemire's nearly divisionless algorithm.
+          .          .          .                    .          .          .                    .          .          .                 // Returns an unbiased random number from __g downscaled to [0,__range)
+          .          .          .                    .          .          .                    .          .          .                 // using an unsigned type _Wp twice as wide as unsigned type _Up.
+          .          .          .                    .          .          .                    .          .          .                 template<typename _Wp, typename _Urbg, typename _Up>
+          .          .          .                    .          .          .                    .          .          .           	static _Up
+200,000,000 ( 2.08%) 0          0                    0          0          0          120,000,000 ( 6.11%) 0          0           	_S_nd(_Urbg& __g, _Up __range)
+          .          .          .                    .          .          .                    .          .          .           	{
+          .          .          .                    .          .          .                    .          .          .           	  using _Up_traits = __gnu_cxx::__int_traits<_Up>;
+          .          .          .                    .          .          .                    .          .          .           	  using _Wp_traits = __gnu_cxx::__int_traits<_Wp>;
+          .          .          .                    .          .          .                    .          .          .           	  static_assert(!_Up_traits::__is_signed, "U must be unsigned");
+          .          .          .                    .          .          .                    .          .          .           	  static_assert(!_Wp_traits::__is_signed, "W must be unsigned");
+          .          .          .                    .          .          .                    .          .          .           	  static_assert(_Wp_traits::__digits == (2 * _Up_traits::__digits),
+          .          .          .                    .          .          .                    .          .          .           			"W must be twice as wide as U");
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .           	  // reference: Fast Random Integer Generation in an Interval
+          .          .          .                    .          .          .                    .          .          .           	  // ACM Transactions on Modeling and Computer Simulation 29 (1), 2019
+          .          .          .                    .          .          .                    .          .          .           	  // https://arxiv.org/abs/1805.10941
+240,000,000 ( 2.49%) 0          0           80,000,000 ( 1.93%) 0          0           80,000,000 ( 4.07%) 0          0           	  _Wp __product = _Wp(__g()) * _Wp(__range);
+ 80,000,000 ( 0.83%) 0          0           40,000,000 ( 0.96%) 0          0           40,000,000 ( 2.04%) 0          0           	  _Up __low = _Up(__product);
+120,000,000 ( 1.25%) 0          0           80,000,000 ( 1.93%) 0          0                    0          0          0           	  if (__low < __range)
+          .          .          .                    .          .          .                    .          .          .           	    {
+          .          .          .                    .          .          .                    .          .          .           	      _Up __threshold = -__range % __range;
+          .          .          .                    .          .          .                    .          .          .           	      while (__low < __threshold)
+          .          .          .                    .          .          .                    .          .          .           		{
+          .          .          .                    .          .          .                    .          .          .           		  __product = _Wp(__g()) * _Wp(__range);
+          .          .          .                    .          .          .                    .          .          .           		  __low = _Up(__product);
+          .          .          .                    .          .          .                    .          .          .           		}
+          .          .          .                    .          .          .                    .          .          .           	    }
+ 80,000,000 ( 0.83%) 2 ( 0.03%) 1 ( 0.04%)  40,000,000 ( 0.96%) 0          0                    0          0          0           	  return __product >> _Up_traits::__digits;
+ 80,000,000 ( 0.83%) 0          0           80,000,000 ( 1.93%) 0          0                    0          0          0           	}
+          .          .          .                    .          .          .                    .          .          .               };
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .             template<typename _IntType>
+          .          .          .                    .          .          .                    .          .          .               template<typename _UniformRandomBitGenerator>
+          .          .          .                    .          .          .                    .          .          .                 typename uniform_int_distribution<_IntType>::result_type
+280,000,000 ( 2.91%) 2 ( 0.03%) 1 ( 0.04%)           0          0          0          200,000,000 (10.18%) 0          0                 uniform_int_distribution<_IntType>::
+          .          .          .                    .          .          .                    .          .          .                 operator()(_UniformRandomBitGenerator& __urng,
+          .          .          .                    .          .          .                    .          .          .           		 const param_type& __param)
+          .          .          .                    .          .          .                    .          .          .                 {
+          .          .          .                    .          .          .                    .          .          .           	typedef typename _UniformRandomBitGenerator::result_type _Gresult_type;
+          .          .          .                    .          .          .                    .          .          .           	typedef typename make_unsigned<result_type>::type __utype;
+          .          .          .                    .          .          .                    .          .          .           	typedef typename common_type<_Gresult_type, __utype>::type __uctype;
+          .          .          .                    .          .          .                    .          .          .           
+ 40,000,000 ( 0.42%) 0          0                    0          0          0           40,000,000 ( 2.04%) 0          0           	constexpr __uctype __urngmin = _UniformRandomBitGenerator::min();
+ 80,000,000 ( 0.83%) 0          0                    0          0          0           40,000,000 ( 2.04%) 0          0           	constexpr __uctype __urngmax = _UniformRandomBitGenerator::max();
+          .          .          .                    .          .          .                    .          .          .           	static_assert( __urngmin < __urngmax,
+          .          .          .                    .          .          .                    .          .          .           	    "Uniform random bit generator must define min() < max()");
+ 40,000,000 ( 0.42%) 0          0                    0          0          0           40,000,000 ( 2.04%) 0          0           	constexpr __uctype __urngrange = __urngmax - __urngmin;
+          .          .          .                    .          .          .                    .          .          .           
+120,000,000 ( 1.25%) 0          0                    0          0          0           40,000,000 ( 2.04%) 0          0           	const __uctype __urange
+320,000,000 ( 3.32%) 0          0           80,000,000 ( 1.93%) 0          0           80,000,000 ( 4.07%) 0          0           	  = __uctype(__param.b()) - __uctype(__param.a());
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .           	__uctype __ret;
+120,000,000 ( 1.25%) 2 ( 0.03%) 1 ( 0.04%)  40,000,000 ( 0.96%) 0          0                    0          0          0           	if (__urngrange > __urange)
+          .          .          .                    .          .          .                    .          .          .           	  {
+          .          .          .                    .          .          .                    .          .          .           	    // downscaling
+          .          .          .                    .          .          .                    .          .          .           
+120,000,000 ( 1.25%) 0          0           40,000,000 ( 0.96%) 0          0           40,000,000 ( 2.04%) 0          0           	    const __uctype __uerange = __urange + 1; // __urange can be zero
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .           #if defined __UINT64_TYPE__ && defined __UINT32_TYPE__
+          .          .          .                    .          .          .                    .          .          .           #if __SIZEOF_INT128__
+          .          .          .                    .          .          .                    .          .          .           	    if _GLIBCXX17_CONSTEXPR (__urngrange == __UINT64_MAX__)
+          .          .          .                    .          .          .                    .          .          .           	      {
+          .          .          .                    .          .          .                    .          .          .           		// __urng produces values that use exactly 64-bits,
+          .          .          .                    .          .          .                    .          .          .           		// so use 128-bit integers to downscale to desired range.
+          .          .          .                    .          .          .                    .          .          .           		__UINT64_TYPE__ __u64erange = __uerange;
+-- line 306 ----------------------------------------
+-- line 308 ----------------------------------------
+          .          .          .                    .          .          .                    .          .          .           							       __u64erange);
+          .          .          .                    .          .          .                    .          .          .           	      }
+          .          .          .                    .          .          .                    .          .          .           	    else
+          .          .          .                    .          .          .                    .          .          .           #endif
+          .          .          .                    .          .          .                    .          .          .           	    if _GLIBCXX17_CONSTEXPR (__urngrange == __UINT32_MAX__)
+          .          .          .                    .          .          .                    .          .          .           	      {
+          .          .          .                    .          .          .                    .          .          .           		// __urng produces values that use exactly 32-bits,
+          .          .          .                    .          .          .                    .          .          .           		// so use 64-bit integers to downscale to desired range.
+ 80,000,000 ( 0.83%) 0          0           40,000,000 ( 0.96%) 0          0           40,000,000 ( 2.04%) 0          0           		__UINT32_TYPE__ __u32erange = __uerange;
+320,000,000 ( 3.32%) 0          0           80,000,000 ( 1.93%) 0          0           80,000,000 ( 4.07%) 0          0           		__ret = _S_nd<__UINT64_TYPE__>(__urng, __u32erange);
+          .          .          .                    .          .          .                    .          .          .           	      }
+          .          .          .                    .          .          .                    .          .          .           	    else
+          .          .          .                    .          .          .                    .          .          .           #endif
+          .          .          .                    .          .          .                    .          .          .           	      {
+          .          .          .                    .          .          .                    .          .          .           		// fallback case (2 divisions)
+          .          .          .                    .          .          .                    .          .          .           		const __uctype __scaling = __urngrange / __uerange;
+          .          .          .                    .          .          .                    .          .          .           		const __uctype __past = __uerange * __scaling;
+          .          .          .                    .          .          .                    .          .          .           		do
+-- line 325 ----------------------------------------
+-- line 353 ----------------------------------------
+          .          .          .                    .          .          .                    .          .          .           			 (__urng, param_type(0, __urange / __uerngrange)));
+          .          .          .                    .          .          .                    .          .          .           		__ret = __tmp + (__uctype(__urng()) - __urngmin);
+          .          .          .                    .          .          .                    .          .          .           	      }
+          .          .          .                    .          .          .                    .          .          .           	    while (__ret > __urange || __ret < __tmp);
+          .          .          .                    .          .          .                    .          .          .           	  }
+          .          .          .                    .          .          .                    .          .          .           	else
+          .          .          .                    .          .          .                    .          .          .           	  __ret = __uctype(__urng()) - __urngmin;
+          .          .          .                    .          .          .                    .          .          .           
+240,000,000 ( 2.49%) 0          0           80,000,000 ( 1.93%) 0          0           40,000,000 ( 2.04%) 0          0           	return __ret + __param.a();
+120,000,000 ( 1.25%) 0          0          120,000,000 ( 2.89%) 0          0                    0          0          0                 }
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .           
+          .          .          .                    .          .          .                    .          .          .             template<typename _IntType>
+          .          .          .                    .          .          .                    .          .          .               template<typename _ForwardIterator,
+          .          .          .                    .          .          .                    .          .          .           	     typename _UniformRandomBitGenerator>
+          .          .          .                    .          .          .                    .          .          .                 void
+          .          .          .                    .          .          .                    .          .          .                 uniform_int_distribution<_IntType>::
+          .          .          .                    .          .          .                    .          .          .                 __generate_impl(_ForwardIterator __f, _ForwardIterator __t,
+-- line 370 ----------------------------------------
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: /usr/include/c++/12/bits/random.tcc
+--------------------------------------------------------------------------------
+Ir                   I1mr       ILmr       Dr                   D1mr       DLmr       Dw                  D1mw        DLmw       
+
+-- line 318 ----------------------------------------
+          .          .          .                    .          .          .                   .           .          .           #endif
+          .          .          .                    .          .          .                   .           .          .           
+          .          .          .                    .          .          .                   .           .          .             template<typename _UIntType,
+          .          .          .                    .          .          .                   .           .          .           	   size_t __w, size_t __n, size_t __m, size_t __r,
+          .          .          .                    .          .          .                   .           .          .           	   _UIntType __a, size_t __u, _UIntType __d, size_t __s,
+          .          .          .                    .          .          .                   .           .          .           	   _UIntType __b, size_t __t, _UIntType __c, size_t __l,
+          .          .          .                    .          .          .                   .           .          .           	   _UIntType __f>
+          .          .          .                    .          .          .                   .           .          .               void
+          5 ( 0.00%) 1 ( 0.02%) 1 ( 0.04%)           0          0          0                   3 ( 0.00%)  0          0               mersenne_twister_engine<_UIntType, __w, __n, __m, __r, __a, __u, __d,
+          .          .          .                    .          .          .                   .           .          .           			    __s, __b, __t, __c, __l, __f>::
+          .          .          .                    .          .          .                   .           .          .               seed(result_type __sd)
+          .          .          .                    .          .          .                   .           .          .               {
+          2 ( 0.00%) 0          0                    1 ( 0.00%) 0          0                   1 ( 0.00%)  1 ( 0.04%) 0                 _M_x[0] = __detail::__mod<_UIntType,
+          3 ( 0.00%) 0          0                    1 ( 0.00%) 0          0                   1 ( 0.00%)  0          0           	__detail::_Shift<_UIntType, __w>::__value>(__sd);
+          .          .          .                    .          .          .                   .           .          .           
+      1,873 ( 0.00%) 2 ( 0.03%) 2 ( 0.08%)       1,247 ( 0.00%) 0          0                   1 ( 0.00%)  0          0                 for (size_t __i = 1; __i < state_size; ++__i)
+          .          .          .                    .          .          .                   .           .          .           	{
+      3,115 ( 0.00%) 0          0                1,869 ( 0.00%) 0          0                 623 ( 0.00%)  0          0           	  _UIntType __x = _M_x[__i - 1];
+      1,869 ( 0.00%) 0          0                1,246 ( 0.00%) 0          0                   0           0          0           	  __x ^= __x >> (__w - 2);
+      1,869 ( 0.00%) 0          0                  623 ( 0.00%) 0          0                 623 ( 0.00%)  0          0           	  __x *= __f;
+      2,492 ( 0.00%) 0          0                1,246 ( 0.00%) 0          0                 623 ( 0.00%)  0          0           	  __x += __detail::__mod<_UIntType, __n>(__i);
+      1,869 ( 0.00%) 0          0                1,246 ( 0.00%) 0          0                 623 ( 0.00%) 76 ( 3.17%) 0           	  _M_x[__i] = __detail::__mod<_UIntType,
+      1,869 ( 0.00%) 0          0                  623 ( 0.00%) 0          0                 623 ( 0.00%)  0          0           	    __detail::_Shift<_UIntType, __w>::__value>(__x);
+          .          .          .                    .          .          .                   .           .          .           	}
+          2 ( 0.00%) 0          0                    1 ( 0.00%) 0          0                   1 ( 0.00%)  0          0                 _M_p = state_size;
+          3 ( 0.00%) 0          0                    2 ( 0.00%) 0          0                   0           0          0               }
+          .          .          .                    .          .          .                   .           .          .           
+          .          .          .                    .          .          .                   .           .          .             template<typename _UIntType,
+          .          .          .                    .          .          .                   .           .          .           	   size_t __w, size_t __n, size_t __m, size_t __r,
+          .          .          .                    .          .          .                   .           .          .           	   _UIntType __a, size_t __u, _UIntType __d, size_t __s,
+          .          .          .                    .          .          .                   .           .          .           	   _UIntType __b, size_t __t, _UIntType __c, size_t __l,
+          .          .          .                    .          .          .                   .           .          .           	   _UIntType __f>
+          .          .          .                    .          .          .                   .           .          .               template<typename _Sseq>
+          .          .          .                    .          .          .                   .           .          .                 auto
+-- line 351 ----------------------------------------
+-- line 389 ----------------------------------------
+          .          .          .                    .          .          .                   .           .          .                 }
+          .          .          .                    .          .          .                   .           .          .           
+          .          .          .                    .          .          .                   .           .          .             template<typename _UIntType, size_t __w,
+          .          .          .                    .          .          .                   .           .          .           	   size_t __n, size_t __m, size_t __r,
+          .          .          .                    .          .          .                   .           .          .           	   _UIntType __a, size_t __u, _UIntType __d, size_t __s,
+          .          .          .                    .          .          .                   .           .          .           	   _UIntType __b, size_t __t, _UIntType __c, size_t __l,
+          .          .          .                    .          .          .                   .           .          .           	   _UIntType __f>
+          .          .          .                    .          .          .                   .           .          .               void
+    192,309 ( 0.00%) 1 ( 0.02%) 1 ( 0.04%)           0          0          0             128,206 ( 0.01%)  0          0               mersenne_twister_engine<_UIntType, __w, __n, __m, __r, __a, __u, __d,
+          .          .          .                    .          .          .                   .           .          .           			    __s, __b, __t, __c, __l, __f>::
+          .          .          .                    .          .          .                   .           .          .               _M_gen_rand(void)
+          .          .          .                    .          .          .                   .           .          .               {
+     64,103 ( 0.00%) 0          0                    0          0          0              64,103 ( 0.00%)  0          0                 const _UIntType __upper_mask = (~_UIntType()) << __r;
+     64,103 ( 0.00%) 0          0                    0          0          0              64,103 ( 0.00%)  0          0                 const _UIntType __lower_mask = ~__upper_mask;
+          .          .          .                    .          .          .                   .           .          .           
+ 43,910,555 ( 0.46%) 4 ( 0.07%) 2 ( 0.08%)  29,166,865 ( 0.70%) 0          0              64,103 ( 0.00%)  0          0                 for (size_t __k = 0; __k < (__n - __m); ++__k)
+          .          .          .                    .          .          .                   .           .          .                   {
+101,859,667 ( 1.06%) 2 ( 0.03%) 1 ( 0.04%)  43,654,143 ( 1.05%) 0          0          14,551,381 ( 0.74%)  0          0           	  _UIntType __y = ((_M_x[__k] & __upper_mask)
+ 72,756,905 ( 0.76%) 0          0           43,654,143 ( 1.05%) 0          0                   0           0          0           			   | (_M_x[__k + 1] & __lower_mask));
+145,513,810 ( 1.51%) 0          0           87,308,286 ( 2.10%) 0          0          14,551,381 ( 0.74%)  0          0           	  _M_x[__k] = (_M_x[__k + __m] ^ (__y >> 1)
+109,134,836 ( 1.13%) 0          0           14,551,381 ( 0.35%) 0          0                   0           0          0           		       ^ ((__y & 0x01) ? __a : 0));
+          .          .          .                    .          .          .                   .           .          .                   }
+          .          .          .                    .          .          .                   .           .          .           
+ 76,410,776 ( 0.79%) 2 ( 0.03%) 1 ( 0.04%)  50,833,679 ( 1.22%) 0          0              64,103 ( 0.00%)  0          0                 for (size_t __k = (__n - __m); __k < (__n - 1); ++__k)
+          .          .          .                    .          .          .                   .           .          .           	{
+177,693,516 ( 1.85%) 0          0           76,154,364 ( 1.83%) 0          0          25,384,788 ( 1.29%)  0          0           	  _UIntType __y = ((_M_x[__k] & __upper_mask)
+126,923,940 ( 1.32%) 0          0           76,154,364 ( 1.83%) 0          0                   0           0          0           			   | (_M_x[__k + 1] & __lower_mask));
+253,847,880 ( 2.64%) 2 ( 0.03%) 1 ( 0.04%) 152,308,728 ( 3.67%) 0          0          25,384,788 ( 1.29%)  0          0           	  _M_x[__k] = (_M_x[__k + (__m - __n)] ^ (__y >> 1)
+190,383,016 ( 1.98%) 0          0           25,384,788 ( 0.61%) 0          0                   0           0          0           		       ^ ((__y & 0x01) ? __a : 0));
+          .          .          .                    .          .          .                   .           .          .           	}
+          .          .          .                    .          .          .                   .           .          .           
+    384,618 ( 0.00%) 0          0              128,206 ( 0.00%) 0          0              64,103 ( 0.00%)  0          0                 _UIntType __y = ((_M_x[__n - 1] & __upper_mask)
+    192,309 ( 0.00%) 0          0              128,206 ( 0.00%) 0          0                   0           0          0           		       | (_M_x[0] & __lower_mask));
+    448,721 ( 0.00%) 2 ( 0.03%) 1 ( 0.04%)     256,412 ( 0.01%) 0          0              64,103 ( 0.00%)  0          0                 _M_x[__n - 1] = (_M_x[__m - 1] ^ (__y >> 1)
+    416,620 ( 0.00%) 0          0               64,103 ( 0.00%) 0          0                   0           0          0           		       ^ ((__y & 0x01) ? __a : 0));
+    128,206 ( 0.00%) 2 ( 0.03%) 0               64,103 ( 0.00%) 0          0              64,103 ( 0.00%)  0          0                 _M_p = 0;
+    192,309 ( 0.00%) 0          0              128,206 ( 0.00%) 0          0                   0           0          0               }
+          .          .          .                    .          .          .                   .           .          .           
+          .          .          .                    .          .          .                   .           .          .             template<typename _UIntType, size_t __w,
+          .          .          .                    .          .          .                   .           .          .           	   size_t __n, size_t __m, size_t __r,
+          .          .          .                    .          .          .                   .           .          .           	   _UIntType __a, size_t __u, _UIntType __d, size_t __s,
+          .          .          .                    .          .          .                   .           .          .           	   _UIntType __b, size_t __t, _UIntType __c, size_t __l,
+          .          .          .                    .          .          .                   .           .          .           	   _UIntType __f>
+          .          .          .                    .          .          .                   .           .          .               void
+          .          .          .                    .          .          .                   .           .          .               mersenne_twister_engine<_UIntType, __w, __n, __m, __r, __a, __u, __d,
+-- line 433 ----------------------------------------
+-- line 445 ----------------------------------------
+          .          .          .                    .          .          .                   .           .          .             template<typename _UIntType, size_t __w,
+          .          .          .                    .          .          .                   .           .          .           	   size_t __n, size_t __m, size_t __r,
+          .          .          .                    .          .          .                   .           .          .           	   _UIntType __a, size_t __u, _UIntType __d, size_t __s,
+          .          .          .                    .          .          .                   .           .          .           	   _UIntType __b, size_t __t, _UIntType __c, size_t __l,
+          .          .          .                    .          .          .                   .           .          .           	   _UIntType __f>
+          .          .          .                    .          .          .                   .           .          .               typename
+          .          .          .                    .          .          .                   .           .          .               mersenne_twister_engine<_UIntType, __w, __n, __m, __r, __a, __u, __d,
+          .          .          .                    .          .          .                   .           .          .           			    __s, __b, __t, __c, __l, __f>::result_type
+160,000,000 ( 1.66%) 2 ( 0.03%) 1 ( 0.04%)           0          0          0          80,000,000 ( 4.07%)  0          0               mersenne_twister_engine<_UIntType, __w, __n, __m, __r, __a, __u, __d,
+          .          .          .                    .          .          .                   .           .          .           			    __s, __b, __t, __c, __l, __f>::
+          .          .          .                    .          .          .                   .           .          .               operator()()
+          .          .          .                    .          .          .                   .           .          .               {
+          .          .          .                    .          .          .                   .           .          .                 // Reload the vector - cost is O(n) amortized over n calls.
+160,000,000 ( 1.66%) 0          0           80,000,000 ( 1.93%) 0          0                   0           0          0                 if (_M_p >= state_size)
+    192,309 ( 0.00%) 0          0               64,103 ( 0.00%) 0          0              64,103 ( 0.00%)  0          0           	_M_gen_rand();
+          .          .          .                    .          .          .                   .           .          .           
+          .          .          .                    .          .          .                   .           .          .                 // Calculate o(x(i)).
+320,000,000 ( 3.32%) 2 ( 0.03%) 1 ( 0.04%) 200,000,000 ( 4.81%) 1 ( 0.01%) 0          80,000,000 ( 4.07%)  0          0                 result_type __z = _M_x[_M_p++];
+160,000,000 ( 1.66%) 0          0           80,000,000 ( 1.93%) 0          0                   0           0          0                 __z ^= (__z >> __u) & __d;
+160,000,000 ( 1.66%) 0          0           80,000,000 ( 1.93%) 0          0                   0           0          0                 __z ^= (__z << __s) & __b;
+160,000,000 ( 1.66%) 1 ( 0.02%) 0           80,000,000 ( 1.93%) 0          0                   0           0          0                 __z ^= (__z << __t) & __c;
+120,000,000 ( 1.25%) 0          0           80,000,000 ( 1.93%) 0          0                   0           0          0                 __z ^= (__z >> __l);
+          .          .          .                    .          .          .                   .           .          .           
+ 40,000,000 ( 0.42%) 0          0           40,000,000 ( 0.96%) 0          0                   0           0          0                 return __z;
+ 80,000,000 ( 0.83%) 0          0           80,000,000 ( 1.93%) 0          0                   0           0          0               }
+          .          .          .                    .          .          .                   .           .          .           
+          .          .          .                    .          .          .                   .           .          .             template<typename _UIntType, size_t __w,
+          .          .          .                    .          .          .                   .           .          .           	   size_t __n, size_t __m, size_t __r,
+          .          .          .                    .          .          .                   .           .          .           	   _UIntType __a, size_t __u, _UIntType __d, size_t __s,
+          .          .          .                    .          .          .                   .           .          .           	   _UIntType __b, size_t __t, _UIntType __c, size_t __l,
+          .          .          .                    .          .          .                   .           .          .           	   _UIntType __f, typename _CharT, typename _Traits>
+          .          .          .                    .          .          .                   .           .          .               std::basic_ostream<_CharT, _Traits>&
+          .          .          .                    .          .          .                   .           .          .               operator<<(std::basic_ostream<_CharT, _Traits>& __os,
+-- line 477 ----------------------------------------
+
+--------------------------------------------------------------------------------
+Ir                     I1mr         ILmr        Dr                     D1mr       DLmr       Dw                     D1mw        DLmw       
+--------------------------------------------------------------------------------
+9,615,289,973 (99.87%) 144 ( 2.38%) 70 ( 2.72%) 4,151,556,010 (99.92%) 2 ( 0.02%) 0          1,962,219,391 (99.91%) 78 ( 3.25%) 0           events annotated
+

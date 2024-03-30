@@ -1,7 +1,7 @@
 #include "save_entropy.hpp"
 
-void save_entropy(int &n_iterations, int &save_step, int &problem_id, int &grid_size, std::vector<double> &entropy) {
-	std::string file_name = "output/P" + std::to_string(problem_id) + "/entropy_gs_" + std::to_string(grid_size) + ".txt";
+void save_entropy(int &n_iterations, int &save_step, int &problem_id, std::vector<double> &entropy) {
+	std::string file_name = "output/P" + std::to_string(problem_id) + "/entropy" + ".txt";
 	std::ofstream output_file(file_name);
 	if (output_file.is_open()) {
         for (int i = 0; i < n_iterations/save_step; i++) {
