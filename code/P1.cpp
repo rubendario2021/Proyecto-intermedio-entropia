@@ -7,6 +7,7 @@
 #include "save_molecules.hpp"
 #include "save_rmsd.hpp"
 #include "save_entropy.hpp"
+#include "save_mean.hpp"
 
 int main(int argc, char *argv[]){
 	// Key that indicate the problem to solve
@@ -40,8 +41,12 @@ int main(int argc, char *argv[]){
 	int save_step = 2000;
 	std::vector<double> entropy(n_iterations/save_step, 0.0);
 	// Expansion to see stabilization of parameters
-	if (n_iterations == 1e6) n_iterations *= 6;
+	if (n_iterations == 1e6) n_iterations *= 10;
 	int save_idx = 0;
+	double mean = 0.0;
+	std::vector<double> vec_mean(n_iterations/save_step, 0.0);
+	double tmp_entropy = 0.0;
+	double rmse = 0.0;
 
 	// The random number generator engine is created before the function to avoid initializing it on each call
     std::mt19937 gen(seed);
@@ -59,8 +64,11 @@ int main(int argc, char *argv[]){
 			// Counting the number of nodes at each cell grid
 			grid_count(dim, n_molecules, lattice_size, grid_size, grid, molecules);
 			// Calculation of the system's entropy
-			entropy[save_idx] = entropy_val(n_molecules, grid_size, grid);
-			
+			tmp_entropy = entropy_val(n_molecules, grid_size, grid);
+			entropy[save_idx] = tmp_entropy;
+			mean += (tmp_entropy - mean)/(save_idx+1);
+			rmse = std::sqrt(save_idx/(save_idx+1)*rmse*rmse + (tmp_entropy-mean)*(tmp_entropy-mean)/(save_idx+1));
+			if (save_idx != 0) vec_mean[save_idx] = rmse;
 			// Condition to save some molecules position
 			if ((idx == 1e4) || (idx == 1e5) || (idx == 1e6)) {
 				// Saving into a text file the coordinates of the molecules for plotting
@@ -71,5 +79,6 @@ int main(int argc, char *argv[]){
 
 	// Saving entropy data
 	save_entropy(n_iterations, save_step, problem_id, entropy);
+	save_mean(n_iterations, save_step, problem_id, vec_mean);
 	return 0;
 }

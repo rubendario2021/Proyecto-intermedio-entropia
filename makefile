@@ -16,7 +16,7 @@ run:
 #	$(MAKE) -C $(CODE_DIR) run_P3
 #	$(MAKE) -C $(CODE_DIR) run_P4
 	$(MAKE) -C $(CODE_DIR) plot_molecules plot_entropy
-	$(MAKE) -C $(CODE_DIR) clean
+#	$(MAKE) -C $(CODE_DIR) clean
 
 # Target that execute with optimizers
 # OPT=1 activates the use of optimizers
