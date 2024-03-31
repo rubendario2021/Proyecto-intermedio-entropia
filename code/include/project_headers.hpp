@@ -8,3 +8,4 @@
 #include "save_molecules.hpp"
 #include "save_rmsd.hpp"
 #include "save_entropy.hpp"
+#include "estim_params_entropy.hpp"

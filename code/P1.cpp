@@ -38,6 +38,8 @@ int main(int argc, char *argv[]){
 	int values_saved = n_iterations/save_step;
 	std::vector<double> entropy(values_saved, 0.0);
 
+	
+
 	// The random number generator engine is created before the function to avoid initializing it on each call
     std::mt19937 gen(seed);
     std::uniform_int_distribution<int> direction_distribution(0, 3);
