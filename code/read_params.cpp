@@ -2,6 +2,7 @@
 
 void read_params(std::string &file_name, int &n_molecules, int &lattice_size, int &n_iterations, int &seed){
 	std::ifstream file(file_name);
+
 	// The text file is opened
 	if (file.is_open()) {
 		std::string line = ""; // Creation of a variable to store the lines of the text file
@@ -9,6 +10,7 @@ void read_params(std::string &file_name, int &n_molecules, int &lattice_size, in
 
 		while (std::getline(file, line)) {
 			int value = std::stoi(line);
+
 			// Switch statement is used to store the variables line by line
 			switch (line_number) {
 				case 0: n_molecules = value; break;
@@ -20,7 +22,7 @@ void read_params(std::string &file_name, int &n_molecules, int &lattice_size, in
 			line_number++;
 		}
 		file.close();
-	} else {
+	} else{
 		std::cerr << "Error: File " + file_name + " was not found."<< std::endl; 
 	}
 }

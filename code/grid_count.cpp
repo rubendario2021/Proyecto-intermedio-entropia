@@ -3,9 +3,11 @@
 void grid_count(int &dim, int &n_molecules, int &lattice_size, int &grid_size, std::vector<int> &grid, std::vector<double> &molecules){
 	// Definition of the size of each cell's side in the grid
 	double grid_bin_size = static_cast<double>(lattice_size) / grid_size;
+
 	int x_bin = 0, y_bin = 0;
 	int pos_x = 0, pos_y = 1;
 	double min_val = -lattice_size/2.0;
+	
 	// The counter for storing the quantity of molecules is reset
 	grid.clear();
 	grid.resize(grid_size*grid_size, 0);

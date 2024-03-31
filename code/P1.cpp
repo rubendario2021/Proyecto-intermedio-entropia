@@ -17,6 +17,7 @@ int main(int argc, char *argv[]){
 	int lattice_size = 0;
 	int n_iterations = 0;
 	int seed = 0;
+
 	// Call the file "input.txt" and a function to read the variables and assign them
 	// Change this, make it console dependent
 	std::string ifile_name = std::string(argv[1]);
@@ -25,6 +26,7 @@ int main(int argc, char *argv[]){
 	// Creation of the matrix of particle positions
 	int dim = 2;
 	std::vector<double> molecules(dim*n_molecules, 0.0);
+
 	// Definition of the initial positions of the molecules
 	initialize_position(dim, n_molecules, lattice_size, molecules);
 
@@ -39,6 +41,7 @@ int main(int argc, char *argv[]){
 	// Definition of some values to save and optimize output files
 	int save_step = 2000;
 	std::vector<double> entropy(n_iterations/save_step, 0.0);
+
 	// Expansion to see stabilization of parameters
 	if (n_iterations == 1e6) n_iterations *= 6;
 	int save_idx = 0;
@@ -56,8 +59,10 @@ int main(int argc, char *argv[]){
 		if (idx%save_step == 0) {
 			// Correction to the index value
 			save_idx = idx/save_step - 1;
+
 			// Counting the number of nodes at each cell grid
 			grid_count(dim, n_molecules, lattice_size, grid_size, grid, molecules);
+			
 			// Calculation of the system's entropy
 			entropy[save_idx] = entropy_val(n_molecules, grid_size, grid);
 			

@@ -2,9 +2,11 @@
 
 void  initialize_position(int &dim, int &n_molecules, int &lattice_size, std::vector<double> &molecules){
     // Initial separation between molecules
-    double separation = 0.1; 
+    double separation = 0.1;
+    
     // The number of input nodes must be a square number
     int length_square = static_cast<int>(std::sqrt(n_molecules));
+
     // The initial molecules is centered in the middle of the container
     double offset = (-(length_square-1)*separation)/2.0;
 
@@ -12,7 +14,9 @@ void  initialize_position(int &dim, int &n_molecules, int &lattice_size, std::ve
     for (int i = 0; i < n_molecules; i++){
         // The x position is iterated within the loop
 		molecules[i*dim + pos_x] = (i%length_square)*separation + offset;
+
         // The y position is calculated through an integer division
-        molecules[i*dim + pos_y] = (i/length_square)*separation + offset;    }
+        molecules[i*dim + pos_y] = (i/length_square)*separation + offset;
+    }
 }
 
