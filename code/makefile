@@ -11,15 +11,17 @@ PLT_DIR := plot
 VAL := 0
 OPT := 0
 PROF := 0
+TEST := 0
 
 # Compiler and its compilations flags:
 # Flags used in the instructions
 CXX := g++
 INCS := -I$(INC_DIR)
-CXXFLAGS := -Wall -g
+CXXFLAGS := -Wall -g -c
 CXXOPTIMIZED := -O3
 CXXSANITIZERS := -fsanitize=leak,address,undefined
 CXXPROFILER := -pg
+CXXTEST := -l Catch2Main -l Catch2
 VALXXMEMCHECK := --tool=memcheck --track-origins=yes --leak-check=full
 VALXXCACHEGRIND := --tool=cachegrind
 
@@ -34,7 +36,7 @@ TARGET_P1 := P1.out
 TARGET_P2 := P2.out
 TARGET_P3 := P3.out
 TARGET_P4 := P4.out
-TARGET_T := test.out
+TARGET_T := func_test.out
 
 # Lookup of auxiliar source files:
 # List of all the files and its object that are used in this project
@@ -143,20 +145,22 @@ memcheck_P4: $(TARGET_P4)
 # Depending of the variables OPT and PROF change its instruction
 %.o: %.cpp
 ifeq ($(OPT), 1)
-	$(CXX) $(INCS) $(CXXFLAGS) $(CXXOPTIMIZED) -c $^ -o $@
+	$(CXX) $(INCS)  $(CXXOPTIMIZED) $(CXXFLAGS) $^ -o $@
 else ifeq ($(PROF), 1)
-	$(CXX) $(INCS) $(CXXFLAGS) $(CXXPROFILER) -c $^ -o $@
+	$(CXX) $(INCS) $(CXXPROFILER) $(CXXFLAGS) $^ -o $@
 else
-	$(CXX) $(INCS) $(CXXFLAGS) -c $^ -o $@
+	$(CXX) $(INCS) $(CXXFLAGS) $^ -o $@
 endif
 
 # Link all the .o files to generate the executable
-# Depending of the variables VAL and PROF change its instruction
+# Depending of the variables VAL, PROF and TEST change its instruction
 %.out: %.o $(OBJS)
 ifeq ($(VAL), 1)
 	$(CXX) $^ -o $@
 else ifeq ($(PROF), 1)
 	$(CXX) $(CXXPROFILER) $^ -o $@
+else ifeq ($(TEST), 1)
+	$(CXX) $^ -o $@ $(CXXTEST)
 else
 	$(CXX) $(CXXSANITIZERS) $^ -o $@
 endif

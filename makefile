@@ -4,32 +4,32 @@ CODE_DIR := code
 
 # --------------------------------------------------------------------------------------------
 
-.PHONY: run run_optimized test gprof cachegrind memcheck clean
+.PHONY: optimized no_optimized test gprof cachegrind memcheck clean
 
 # Target by default
-all: run
+all: optimized
 
 # Target that execute and plot the data
-run:
-	$(MAKE) -C $(CODE_DIR) run_P1
-#	$(MAKE) -C $(CODE_DIR) run_P2
-#	$(MAKE) -C $(CODE_DIR) run_P3
-#	$(MAKE) -C $(CODE_DIR) run_P4
-	$(MAKE) -C $(CODE_DIR) plot_molecules plot_entropy
-	$(MAKE) -C $(CODE_DIR) clean
-
-# Target that execute with optimizers
 # OPT=1 activates the use of optimizers
-run_optimized:
+optimized:
 	$(MAKE) -C $(CODE_DIR) run_P1 OPT=1
 #	$(MAKE) -C $(CODE_DIR) run_P2 OPT=1
 #	$(MAKE) -C $(CODE_DIR) run_P3 OPT=1
 #	$(MAKE) -C $(CODE_DIR) run_P4 OPT=1
+	$(MAKE) -C $(CODE_DIR) plot_molecules plot_entropy
+	$(MAKE) -C $(CODE_DIR) clean
+
+# Target that execute with optimizers
+no_optimized:
+	$(MAKE) -C $(CODE_DIR) run_P1
+#	$(MAKE) -C $(CODE_DIR) run_P2
+#	$(MAKE) -C $(CODE_DIR) run_P3
+#	$(MAKE) -C $(CODE_DIR) run_P4
 	$(MAKE) -C $(CODE_DIR) clean
 
 # Target that execute the test for certain functions
 test:
-	$(MAKE) -C $(CODE_DIR) test
+	$(MAKE) -C $(CODE_DIR) test TEST=1
 	$(MAKE) -C $(CODE_DIR) clean
 
 # Target that perform profiling using gprof

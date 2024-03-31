@@ -4,37 +4,37 @@ Por favor antes de ejecutar las intrucciones, lea el siguiente archivo con cuida
 
 Asegúrese de estar dentro del directorio en el cual se encuentra este documento y ejecute los siguientes comandos en función de la acción que busque realizar.
 
-1. Para compilar y ejecutar el código base sin optimización y generar las gráficas.
+1. Para compilar y ejecutar el código base con sanitizers, optimización y generar las gráficas.
 
 	```
 	make
 	```
 
-2. Para compilar y ejecutar con optimización
+2. Para compilar y ejecutar sin optimización. Por defecto no tiene contemplado la generación de gráficas.
 
 	```
-	make run_optimized
+	make no_optimized
 	```
 
-3. Para hacer los test usando `catch2`.
+3. Para hacer los test usando `catch2`. Por defecto no utiliza banderas de optimización.
 
 	```
 	make test
 	```
 
-4. Para hacer profiling con `gprof`.
+4. Para hacer profiling con `gprof`. Por defecto no utiliza banderas de optimización.
 
 	```
 	make gprof
 	```
 
-5. Para hacer profiling con `valgrind-cachegrind`.
+5. Para hacer profiling con `valgrind-cachegrind`. Por defecto no utiliza banderas de optimización.
 
 	```
 	make cachegrind
 	```
 
-6. Para evaluar el uso de memoria con `valgrind-memcheck`.
+6. Para evaluar el uso de memoria con `valgrind-memcheck`. Por defecto no utiliza banderas de optimización.
 
 	```
 	make memcheck

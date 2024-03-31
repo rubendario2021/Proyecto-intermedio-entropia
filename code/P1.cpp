@@ -1,12 +1,4 @@
-#include "read_params.hpp"
-#include "grid_count.hpp"
-#include "entropy_val.hpp"
-#include "initialize_position.hpp"
-#include "rmsd_val.hpp"
-#include "random_movement.hpp"
-#include "save_molecules.hpp"
-#include "save_rmsd.hpp"
-#include "save_entropy.hpp"
+#include "project_headers.hpp"
 
 int main(int argc, char *argv[]){
 	// Key that indicate the problem to solve
@@ -37,40 +29,38 @@ int main(int argc, char *argv[]){
 	// Definition of the container size for probability
 	int grid_size = 8;
 	std::vector<int> grid(grid_size*grid_size, 0);
-	
-	// Definition of some values to save and optimize output files
-	int save_step = 2000;
-	std::vector<double> entropy(n_iterations/save_step, 0.0);
 
 	// Expansion to see stabilization of parameters
 	if (n_iterations == 1e6) n_iterations *= 6;
-	int save_idx = 0;
+
+	// Definition of some values to save and optimize output files
+	int save_step = 2000;
+	int values_saved = n_iterations/save_step;
+	std::vector<double> entropy(values_saved, 0.0);
 
 	// The random number generator engine is created before the function to avoid initializing it on each call
     std::mt19937 gen(seed);
     std::uniform_int_distribution<int> direction_distribution(0, 3);
 	
 	// The code is iterated to perform the movement of molecules and their respective parameters
-	for(idx = 1; idx <= n_iterations; idx++) {
+	for (int save_idx = 0; save_idx < values_saved; save_idx++) {
+		
 		// A random movement of the particles is generated
-		random_movement(dim, n_molecules, lattice_size, seed, molecules, gen, direction_distribution);
+		for (int ii = 0; ii < save_step; ii++) {
+			random_movement(dim, n_molecules, lattice_size, seed, molecules, gen, direction_distribution);
+		}
 
-		// Condition to save some data 
-		if (idx%save_step == 0) {
-			// Correction to the index value
-			save_idx = idx/save_step - 1;
-
-			// Counting the number of nodes at each cell grid
-			grid_count(dim, n_molecules, lattice_size, grid_size, grid, molecules);
+		// Counting the number of nodes at each cell grid
+		grid_count(dim, n_molecules, lattice_size, grid_size, grid, molecules);
 			
-			// Calculation of the system's entropy
-			entropy[save_idx] = entropy_val(n_molecules, grid_size, grid);
+		// Calculation of the system's entropy
+		entropy[save_idx] = entropy_val(n_molecules, grid_size, grid);
 			
-			// Condition to save some molecules position
-			if ((idx == 1e4) || (idx == 1e5) || (idx == 1e6)) {
-				// Saving into a text file the coordinates of the molecules for plotting
-				save_molecules(idx, problem_id, dim, n_molecules, molecules);
-			}
+		// Condition to save some molecules position
+		idx = (save_idx+1) * save_step;
+		if ((idx == 4) || (idx == 1e5) || (idx == 1e6)) {
+			// Saving into a text file the coordinates of the molecules for plotting
+			save_molecules(idx, problem_id, dim, n_molecules, molecules);
 		}
 	}
 
