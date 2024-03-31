@@ -40,7 +40,7 @@ TARGET_T := func_test.out
 
 # Lookup of auxiliar source files:
 # List of all the files and its object that are used in this project
-SRCS := $(filter-out P1.cpp P2.cpp P3.cpp P4.cpp test.cpp, $(wildcard *.cpp))
+SRCS := $(filter-out P1.cpp P2.cpp P3.cpp P4.cpp func_test.cpp, $(wildcard *.cpp))
 OBJS := $(SRCS:.cpp=.o)
 
 # Report files:

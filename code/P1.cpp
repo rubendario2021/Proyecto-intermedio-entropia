@@ -38,8 +38,6 @@ int main(int argc, char *argv[]){
 	int values_saved = n_iterations/save_step;
 	std::vector<double> entropy(values_saved, 0.0);
 
-	
-
 	// The random number generator engine is created before the function to avoid initializing it on each call
     std::mt19937 gen(seed);
     std::uniform_int_distribution<int> direction_distribution(0, 3);
@@ -60,7 +58,7 @@ int main(int argc, char *argv[]){
 			
 		// Condition to save some molecules position
 		idx = (save_idx+1) * save_step;
-		if ((idx == 4) || (idx == 1e5) || (idx == 1e6)) {
+		if ((idx == 1e4) || (idx == 1e5) || (idx == 1e6)) {
 			// Saving into a text file the coordinates of the molecules for plotting
 			save_molecules(idx, problem_id, dim, n_molecules, molecules);
 		}
