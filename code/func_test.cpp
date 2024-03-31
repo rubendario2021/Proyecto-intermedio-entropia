@@ -48,8 +48,8 @@ TEST_CASE("Number of molecules in each grid given its position", "[grid_count]")
 		grid_count(dim, n_molecules, lattice_size, grid_size, grid, molecules);
 		
 		/*
-		Given grid_size, each square cell has a length of lattice_size/grid_size = 1
-		That is, the cells will store the positions in the following ranges [-2, -1) [-1, 0) [0, 1) [1, 2)
+		Given grid_size, each square cell has a length of (double)lattice_size/grid_size = 1.0
+		That is, the cells will store the positions in the following ranges [-2.0, -1.0) [-1.0, 0.0) [0.0, 1.0) [1.0, 2.0)
 		Therefore, in cell 2, 2 there will be 20 molecules 
 		*/ 
 
@@ -84,8 +84,8 @@ TEST_CASE("Number of molecules in each grid given its position", "[grid_count]")
 		grid_count(dim, n_molecules, lattice_size, grid_size, grid, molecules);
 		
 		/*
-		Given grid_size, each square cell has a length of lattice_size/grid_size = 2
-		That is, the cells will store the positions in the following ranges [-2, 0) [0, 2)
+		Given grid_size, each square cell has a length of (double)lattice_size/grid_size = 2.0
+		That is, the cells will store the positions in the following ranges [-2.0, 0.0) [0.0, 2.0)
 		Therefore, in each cell there will be 1 molecules 
 		*/ 
 
