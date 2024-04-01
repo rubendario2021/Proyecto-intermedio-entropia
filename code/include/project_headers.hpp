@@ -7,6 +7,5 @@
 #include "random_movement.hpp"
 #include "save_molecules.hpp"
 #include "save_rmsd.hpp"
-#include "save_mean_slope.hpp"
 #include "save_entropy.hpp"
 #include "fit_monomial.hpp"
