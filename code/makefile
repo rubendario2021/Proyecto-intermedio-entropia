@@ -144,12 +144,14 @@ memcheck_P4: $(TARGET_P4)
 # Makefile core targets:
 
 # Compile all the .o files given its respective .cpp files
-# Depending of the variables OPT and PROF change its instruction
+# Depending of the variables OPT, VAL and PROF change its instruction
 %.o: %.cpp
 ifeq ($(OPT), 1)
 	$(CXX) $(INCS) $(CXXOPTIMIZED) $(CXXFLAGS) $^ -o $@
+else ifeq ($(VAL), 1)
+	$(CXX) $(INCS) $(CXXOPTIMIZED) $(CXXFLAGS) $^ -o $@
 else ifeq ($(PROF), 1)
-	$(CXX) $(INCS) $(CXXPROFILER) $(CXXFLAGS) $^ -o $@
+	$(CXX) $(INCS) $(CXXOPTIMIZED) $(CXXPROFILER) $(CXXFLAGS) $^ -o $@
 else
 	$(CXX) $(INCS) $(CXXFLAGS) $^ -o $@
 endif

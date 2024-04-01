@@ -30,9 +30,6 @@ int main(int argc, char *argv[]){
 	int grid_size = 8;
 	std::vector<int> grid(grid_size*grid_size, 0);
 
-	// Expansion to see stabilization of parameters
-	if (n_iterations == 1e6) n_iterations *= 6;
-
 	// Definition of some values to save and optimize output files
 	int save_step = 2000;
 	int values_saved = n_iterations/save_step;

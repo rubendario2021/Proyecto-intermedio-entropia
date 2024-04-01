@@ -8,5 +8,6 @@
 #include "save_molecules.hpp"
 #include "save_rmsd.hpp"
 #include "save_entropy.hpp"
+#include "save_fit_ts.hpp"
 #include "fit_monomial.hpp"
 #include "fit_exponential.hpp"
