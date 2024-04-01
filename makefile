@@ -13,10 +13,11 @@ all: optimized
 # OPT=1 activates the use of optimizers
 optimized:
 	$(MAKE) -C $(CODE_DIR) run_P1 OPT=1
+	$(MAKE) -C $(CODE_DIR) run_P1_2 OPT=1
 #	$(MAKE) -C $(CODE_DIR) run_P2 OPT=1
 #	$(MAKE) -C $(CODE_DIR) run_P3 OPT=1
 #	$(MAKE) -C $(CODE_DIR) run_P4 OPT=1
-	$(MAKE) -C $(CODE_DIR) plot_molecules plot_entropy
+	$(MAKE) -C $(CODE_DIR) plot_molecules plot_entropy plot_mean_slope
 	$(MAKE) -C $(CODE_DIR) clean
 
 # Target that execute with optimizers

@@ -30,18 +30,24 @@ int main(int argc, char *argv[]){
 	int grid_size = 8;
 	std::vector<int> grid(grid_size*grid_size, 0);
 
-	// Expansion to see stabilization of parameters
-	if (n_iterations == 1e6) n_iterations *= 6;
+	// Expansion to see convergence behaviour
+	n_iterations *= 15;
 
 	// Definition of some values to save and optimize output files
 	int save_step = 2000;
 	int values_saved = n_iterations/save_step;
-	std::vector<double> entropy(values_saved, 0.0);
+	double entropy_i_1 = 0.0;
+	double entropy_i = 0.0;
 
-	// Times at which the molecules will be saved
-	int time2 = 1e4/save_step - 1;
-	int time3 = 1e5/save_step - 1;
-	int time4 = 1e6/save_step - 1;
+	// Statistics to show convergence of values (tested on entropy)
+	/*
+	This implementation is a quite rustic, but is useful to show a convergence plot, the idea of iterative
+	algorithms is not to store the values inside a data structure but optimize processes
+	*/ 
+	double mean_val = 0.0;
+	double alpha = 0.0; // Smooth factor
+	double slope = 0.0;
+	std::vector<double> mean(values_saved-1, 0.0);
 
 	// The random number generator engine is created before the function to avoid initializing it on each call
     std::mt19937 gen(seed);
@@ -59,17 +65,18 @@ int main(int argc, char *argv[]){
 		grid_count(dim, n_molecules, lattice_size, grid_size, grid, molecules);
 			
 		// Calculation of the system's entropy
-		entropy[save_idx] = entropy_val(n_molecules, grid_size, grid);
-			
-		// Condition to save some molecules position
-		if ((save_idx == time2) || (save_idx == time3) || (save_idx == time4)) {
-			// Saving into a text file the coordinates of the molecules for plotting
-			idx = (save_idx+1) * save_step;
-			save_molecules(idx, problem_id, dim, n_molecules, molecules);
-		}
+		entropy_i_1 = entropy_i;
+		entropy_i = entropy_val(n_molecules, grid_size, grid);
+		
+		// Calculation of statistics
+		alpha = 1.0/(save_idx+1);
+		slope = (entropy_i - entropy_i_1)/save_step;
+		mean_val = (1-alpha)*mean_val + alpha*slope;
+		
+		mean[save_idx] = mean_val;
 	}
 
-	// Saving entropy data
-	save_entropy(n_iterations, save_step, problem_id, entropy);
+	// Saving mean slope data
+	save_mean_slope(n_iterations, save_step, problem_id, mean);
 	return 0;
 }

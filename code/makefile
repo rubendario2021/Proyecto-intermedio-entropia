@@ -8,6 +8,7 @@ PLT_DIR := plot
 
 # Conditional variables:
 # These values are used to change some commands
+P := 0
 VAL := 0
 OPT := 0
 PROF := 0
@@ -17,7 +18,7 @@ TEST := 0
 # Flags used in the instructions
 CXX := g++
 INCS := -I$(INC_DIR)
-CXXFLAGS := -Wall -g -c
+CXXFLAGS := --std=c++17 -Wall -g -c
 CXXOPTIMIZED := -O3
 CXXSANITIZERS := -fsanitize=leak,address,undefined
 CXXPROFILER := -pg
@@ -33,6 +34,7 @@ IFILE_PROF := $(IN_DIR)/input-profiling.txt
 # Executable files used in the program:
 # List of all the expected executable that can be made within this project
 TARGET_P1 := P1.out
+TARGET_P1_2 := P1_2.out
 TARGET_P2 := P2.out
 TARGET_P3 := P3.out
 TARGET_P4 := P4.out
@@ -40,7 +42,7 @@ TARGET_T := func_test.out
 
 # Lookup of auxiliar source files:
 # List of all the files and its object that are used in this project
-SRCS := $(filter-out P1.cpp P2.cpp P3.cpp P4.cpp func_test.cpp, $(wildcard *.cpp))
+SRCS := $(filter-out P1.cpp P1_2.cpp P2.cpp P3.cpp P4.cpp func_test.cpp, $(wildcard *.cpp))
 OBJS := $(SRCS:.cpp=.o)
 
 # Report files:
@@ -59,13 +61,15 @@ CACHEGRIND_RP4 := $(REP_DIR)/cachegrind-report-P4.txt
 # List of all the gnuplot used in this project
 PLT_MOLECULES := $(PLT_DIR)/script_molecules.gp
 PLT_ENTROPY := $(PLT_DIR)/script_entropy.gp
-PLT_RSMD := $(PLT_DIR)/script_rsmd.gp
+PLT_RMSD := $(PLT_DIR)/script_rmsd.gp
+PLT_MEAN_SLOPE := $(PLT_DIR)/script_mean_slope.gp
 
 # Plotting data:
 # List of all the data that can be plotted in this project
 MOL_DATA := $(OUT_DIR)/*/molecules*.txt
 ENT_DATA := $(OUT_DIR)/*/entropy*.txt
-RSMD_DATA := $(OUT_DIR)/*/rmsd*.txt
+RMSD_DATA := $(OUT_DIR)/*/rmsd*.txt
+MEAN_SLOPE_DATA := $(OUT_DIR)/*/mean_slope*.txt
 
 # --------------------------------------------------------------------------------------------
 
@@ -93,6 +97,11 @@ cachegrind_P1: $(TARGET_P1)
 
 memcheck_P1: $(TARGET_P1)
 	valgrind $(VALXXMEMCHECK) ./$^ $(IFILE_PROF)
+
+# P1_1
+# This code will not be profiled or memory checked because its just an intermediate step
+run_P1_2: $(TARGET_P1_2)
+	./$^ $(IFILE)
 
 # P2
 run_P2: $(TARGET_P2)
@@ -145,7 +154,7 @@ memcheck_P4: $(TARGET_P4)
 # Depending of the variables OPT and PROF change its instruction
 %.o: %.cpp
 ifeq ($(OPT), 1)
-	$(CXX) $(INCS)  $(CXXOPTIMIZED) $(CXXFLAGS) $^ -o $@
+	$(CXX) $(INCS) $(CXXOPTIMIZED) $(CXXFLAGS) $^ -o $@
 else ifeq ($(PROF), 1)
 	$(CXX) $(INCS) $(CXXPROFILER) $(CXXFLAGS) $^ -o $@
 else
@@ -179,8 +188,14 @@ plot_entropy: $(PLT_ENTROPY) $(ENT_DATA)
 		gnuplot -c $< $$F $$(dirname $$F)/$$(basename $$F .txt).pdf; \
 	done;
 
+# Plot all the files that are related to system's entropy
+plot_mean_slope: $(PLT_MEAN_SLOPE) $(MEAN_SLOPE_DATA)
+	@for F in $(MEAN_SLOPE_DATA); do \
+		gnuplot -c $< $$F $$(dirname $$F)/$$(basename $$F .txt).pdf; \
+	done;
+
 # Clean target:
 # Delete all the output files
 clean:
 	rm -f *.out *.out.* *.o
-	rm -f $(MOL_DATA) $(ENT_DATA) $(RSMD_DATA)
+	rm -f $(MOL_DATA) $(ENT_DATA) $(RSMD_DATA) $(MEAN_SLOPE_DATA)
