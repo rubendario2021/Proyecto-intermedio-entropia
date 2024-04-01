@@ -70,6 +70,6 @@ int main(int argc, char *argv[]){
 	}
 
 	// Saving entropy data
-	save_entropy(n_iterations, save_step, problem_id, entropy);
+	save_entropy(n_iterations, grid_size, save_step, problem_id, entropy);
 	return 0;
 }

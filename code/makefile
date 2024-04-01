@@ -62,14 +62,12 @@ CACHEGRIND_RP4 := $(REP_DIR)/cachegrind-report-P4.txt
 PLT_MOLECULES := $(PLT_DIR)/script_molecules.gp
 PLT_ENTROPY := $(PLT_DIR)/script_entropy.gp
 PLT_RMSD := $(PLT_DIR)/script_rmsd.gp
-PLT_MEAN_SLOPE := $(PLT_DIR)/script_mean_slope.gp
 
 # Plotting data:
 # List of all the data that can be plotted in this project
 MOL_DATA := $(OUT_DIR)/*/molecules*.txt
 ENT_DATA := $(OUT_DIR)/*/entropy*.txt
 RMSD_DATA := $(OUT_DIR)/*/rmsd*.txt
-MEAN_SLOPE_DATA := $(OUT_DIR)/*/mean_slope*.txt
 
 # --------------------------------------------------------------------------------------------
 
@@ -97,11 +95,6 @@ cachegrind_P1: $(TARGET_P1)
 
 memcheck_P1: $(TARGET_P1)
 	valgrind $(VALXXMEMCHECK) ./$^ $(IFILE_PROF)
-
-# P1_1
-# This code will not be profiled or memory checked because its just an intermediate step
-run_P1_2: $(TARGET_P1_2)
-	./$^ $(IFILE)
 
 # P2
 run_P2: $(TARGET_P2)
@@ -188,14 +181,8 @@ plot_entropy: $(PLT_ENTROPY) $(ENT_DATA)
 		gnuplot -c $< $$F $$(dirname $$F)/$$(basename $$F .txt).pdf; \
 	done;
 
-# Plot all the files that are related to system's entropy
-plot_mean_slope: $(PLT_MEAN_SLOPE) $(MEAN_SLOPE_DATA)
-	@for F in $(MEAN_SLOPE_DATA); do \
-		gnuplot -c $< $$F $$(dirname $$F)/$$(basename $$F .txt).pdf; \
-	done;
-
 # Clean target:
 # Delete all the output files
 clean:
 	rm -f *.out *.out.* *.o
-	rm -f $(MOL_DATA) $(ENT_DATA) $(RSMD_DATA) $(MEAN_SLOPE_DATA)
+	rm -f $(MOL_DATA) $(ENT_DATA) $(RSMD_DATA)
