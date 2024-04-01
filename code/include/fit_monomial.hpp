@@ -3,4 +3,4 @@
 #include <numeric>
 #include <cmath>
 
-void fit_monomial(std::vector<int> &x, std::vector<int> &y, double &exponent, double &coefficient);
+void fit_monomial(std::vector<double> &x, std::vector<double> &y, double &exponent, double &coefficient);

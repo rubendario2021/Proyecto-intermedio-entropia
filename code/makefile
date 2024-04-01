@@ -8,7 +8,6 @@ PLT_DIR := plot
 
 # Conditional variables:
 # These values are used to change some commands
-P := 0
 VAL := 0
 OPT := 0
 PROF := 0
@@ -34,7 +33,6 @@ IFILE_PROF := $(IN_DIR)/input-profiling.txt
 # Executable files used in the program:
 # List of all the expected executable that can be made within this project
 TARGET_P1 := P1.out
-TARGET_P1_2 := P1_2.out
 TARGET_P2 := P2.out
 TARGET_P3 := P3.out
 TARGET_P4 := P4.out
@@ -42,7 +40,7 @@ TARGET_T := func_test.out
 
 # Lookup of auxiliar source files:
 # List of all the files and its object that are used in this project
-SRCS := $(filter-out P1.cpp P1_2.cpp P2.cpp P3.cpp P4.cpp func_test.cpp, $(wildcard *.cpp))
+SRCS := $(filter-out P1.cpp P2.cpp P3.cpp P4.cpp func_test.cpp, $(wildcard *.cpp))
 OBJS := $(SRCS:.cpp=.o)
 
 # Report files:

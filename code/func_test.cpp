@@ -14,7 +14,7 @@ TEST_CASE("System entropy is calculed", "[entropy_val]") {
 
 		double entropy = entropy_val(n_molecules, grid_size, grid);
 
-		REQUIRE(std::fabs(entropy - 0.0) <= eps);
+		REQUIRE(std::fabs(entropy) <= eps);
 	}
 
 	SECTION("Same amount of molecules in each grid") {

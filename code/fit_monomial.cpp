@@ -1,6 +1,6 @@
 #include "fit_monomial.hpp"
 
-void fit_monomial(std::vector<int> &x, std::vector<int> &y, double &exponent, double &coefficient){ 
+void fit_monomial(std::vector<double> &x, std::vector<double> &y, double &exponent, double &coefficient){ 
 
     /*
 	SYSTEM OF EQUATIONS for curve fitting.
