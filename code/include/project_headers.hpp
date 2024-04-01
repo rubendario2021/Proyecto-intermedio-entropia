@@ -9,4 +9,4 @@
 #include "save_rmsd.hpp"
 #include "save_mean_slope.hpp"
 #include "save_entropy.hpp"
-#include "estim_params_entropy.hpp"
+#include "fit_monomial.hpp"

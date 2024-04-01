@@ -95,3 +95,38 @@ TEST_CASE("Number of molecules in each grid given its position", "[grid_count]")
 		REQUIRE(grid[1*grid_size + 1] == 1);
 	}
 }
+
+TEST_CASE("Fitting monomials", "[fit_monomial]") {
+
+	double eps = 1e-2;
+
+	SECTION("Testing to function y = 0.5*x^(2)") {
+		double exponent = 0.0;
+		double coefficient = 0.0;
+		
+		std::vector<double> x(9, 0.0);
+		x = {1.5, 2.0, 3.4, 4.3, 5.7, 5.8, 6.2, 6.9, 7.0};
+		std::vector<double> y(9, 0.0);
+		y = {1.13, 2.00, 5.78, 9.25, 16.25, 16.82, 19.22, 23.81, 24.50};
+
+		fit_monomial(x, y, exponent, coefficient);
+		
+		REQUIRE(std::fabs((coefficient - 0.5))/0.5 <= eps);
+		REQUIRE(std::fabs((exponent - 2.0))/2.0 <= eps);
+	}
+
+	SECTION("Testing to function y = 4.85*x^(1.89)") {
+		double exponent = 0.0;
+		double coefficient = 0.0;
+		
+		std::vector<double> x(5, 0.0);
+		x = {0.50, 0.80, 1.36, 2.58, 4.98};
+		std::vector<double> y(5, 0.0);
+		y = {1.31, 3.18, 8.67, 29.09, 100.81};
+
+		fit_monomial(x, y, exponent, coefficient);
+		 
+		REQUIRE(std::fabs((coefficient - 4.85))/4.85 <= eps);
+		REQUIRE(std::fabs((exponent - 1.89))/1.89 <= eps);
+	}
+}

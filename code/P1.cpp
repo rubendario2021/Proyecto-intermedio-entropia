@@ -52,7 +52,7 @@ int main(int argc, char *argv[]){
 		
 		// A random movement of the particles is generated
 		for (int ii = 0; ii < save_step; ii++) {
-			random_movement(dim, n_molecules, lattice_size, seed, molecules, gen, direction_distribution);
+			random_movement(dim, n_molecules, lattice_size, molecules, gen, direction_distribution);
 		}
 
 		// Counting the number of nodes at each cell grid
