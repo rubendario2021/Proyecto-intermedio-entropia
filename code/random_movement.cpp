@@ -1,6 +1,6 @@
 #include "random_movement.hpp"
 
-void random_movement(int &dim, int &n_molecules, int &lattice_size, std::vector<double> &molecules, std::mt19937 &gen, std::uniform_int_distribution<int> &direction_distribution){
+void random_movement(int &dim, int &n_molecules, int &lattice_size, std::vector<double> &molecules, std::mt19937 &gen, std::uniform_int_distribution<int> &direction_distribution, int &problem_id, int &count_out){
 
     // The constant movement passage of the simulation is defined
     double step_size = 0.005;
@@ -11,11 +11,16 @@ void random_movement(int &dim, int &n_molecules, int &lattice_size, std::vector<
     double limit = lattice_size/2.0; // Limit for a centered coordinate system
     double m_limit = -1.0*limit;
 
+	double hole = lattice_size/10.0;
+    double out = 2.0*lattice_size;
+
     // For contact with the wall or position outside the box, the movement in that direction is reflected twice
     double step_backward = 2.0*step_size; 
 
     for (int i = 0; i < n_molecules; i++){
         direction = direction_distribution(gen);
+		if ((problem_id == 4) && ((molecules[i*dim + pos_x] - out) <= 1e-3)) direction = 4;
+
         switch (direction) {
             case 0: // Up
                 molecules[i*dim + pos_y] += step_size;
@@ -24,8 +29,14 @@ void random_movement(int &dim, int &n_molecules, int &lattice_size, std::vector<
 
             case 1: // Down
                 molecules[i*dim + pos_y] -= step_size;
-                if (molecules[i*dim + pos_y] <= m_limit) molecules[i*dim + pos_y] += step_backward;
-                break;
+                if (molecules[i*dim + pos_y] <= m_limit) {
+					molecules[i*dim + pos_y] += step_backward;
+					if ((problem_id == 4) && (std::fabs(molecules[i*dim + pos_x]) < hole)) {
+						molecules[i*dim + pos_x] = out;
+						count_out++;
+					} 
+				}
+				break;
 
             case 2: // Left
                 molecules[i*dim + pos_x] -= step_size;

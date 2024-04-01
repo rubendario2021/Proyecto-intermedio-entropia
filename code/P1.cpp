@@ -3,6 +3,7 @@
 int main(int argc, char *argv[]){
 	// Key that indicate the problem to solve
 	int problem_id = 1;
+	int count_out = 0;
 
 	// Definition of the entries in the file "input.txt" as integers
 	int n_molecules = 0;
@@ -49,7 +50,7 @@ int main(int argc, char *argv[]){
 		
 		// A random movement of the particles is generated
 		for (int ii = 0; ii < save_step; ii++) {
-			random_movement(dim, n_molecules, lattice_size, molecules, gen, direction_distribution);
+			random_movement(dim, n_molecules, lattice_size, molecules, gen, direction_distribution, problem_id, count_out);
 		}
 
 		// Counting the number of nodes at each cell grid

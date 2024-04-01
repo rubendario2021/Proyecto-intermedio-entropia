@@ -2,7 +2,8 @@
 
 int main(int argc, char *argv[]){
 	// Key that indicate the problem to solve
-	int problem_id = 1;
+	int problem_id = 4;
+	int count_out = 0;
 
 	// Definition of the entries in the file "input.txt" as integers
 	int n_molecules = 0;
@@ -22,26 +23,9 @@ int main(int argc, char *argv[]){
 	// Definition of the initial positions of the molecules
 	initialize_position(dim, n_molecules, lattice_size, molecules);
 
-	// Saving into a text file the initial coordinates of the molecules for plotting
-	int idx = 0;
-	save_molecules(idx, problem_id, dim, n_molecules, molecules);
-
-	// Definition of the container size for probability
-	int grid_size = 8;
-	std::vector<int> grid(grid_size*grid_size, 0);
-
-	// Expansion to see stabilization of parameters
-	if (n_iterations == 1e6) n_iterations *= 6;
-
 	// Definition of some values to save and optimize output files
 	int save_step = 2000;
 	int values_saved = n_iterations/save_step;
-	std::vector<double> entropy(values_saved, 0.0);
-
-	// Times at which the molecules will be saved
-	int time2 = 1e4/save_step - 1;
-	int time3 = 1e5/save_step - 1;
-	int time4 = 1e6/save_step - 1;
 
 	// The random number generator engine is created before the function to avoid initializing it on each call
     std::mt19937 gen(seed);
@@ -52,24 +36,9 @@ int main(int argc, char *argv[]){
 		
 		// A random movement of the particles is generated
 		for (int ii = 0; ii < save_step; ii++) {
-			random_movement(dim, n_molecules, lattice_size, molecules, gen, direction_distribution);
-		}
-
-		// Counting the number of nodes at each cell grid
-		grid_count(dim, n_molecules, lattice_size, grid_size, grid, molecules);
-			
-		// Calculation of the system's entropy
-		entropy[save_idx] = entropy_val(n_molecules, grid_size, grid);
-			
-		// Condition to save some molecules position
-		if ((save_idx == time2) || (save_idx == time3) || (save_idx == time4)) {
-			// Saving into a text file the coordinates of the molecules for plotting
-			idx = (save_idx+1) * save_step;
-			save_molecules(idx, problem_id, dim, n_molecules, molecules);
+			random_movement(dim, n_molecules, lattice_size, molecules, gen, direction_distribution, problem_id, count_out);
 		}
 	}
 
-	// Saving entropy data
-	save_entropy(n_iterations, grid_size, save_step, problem_id, entropy);
 	return 0;
 }
