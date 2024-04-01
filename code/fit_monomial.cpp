@@ -15,8 +15,8 @@ void fit_monomial(std::vector<double> &x, std::vector<double> &y, double &expone
     std::vector<double> x_log(n_elements, 0.0);
 	std::vector<double> y_log(n_elements, 0.0);
 	for (int i = 0; i < n_elements; i++) {
-        x_log[i] += std::log(x[i]);
-		y_log[i] += std::log(y[i]);
+        x_log[i] = std::log(x[i]);
+		y_log[i] = std::log(y[i]);
     }
     
     /*
