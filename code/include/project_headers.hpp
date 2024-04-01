@@ -9,3 +9,4 @@
 #include "save_rmsd.hpp"
 #include "save_entropy.hpp"
 #include "fit_monomial.hpp"
+#include "fit_exponential.hpp"

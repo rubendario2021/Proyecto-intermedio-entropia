@@ -87,7 +87,7 @@ int main(int argc, char *argv[]){
 	double coefficient = 0.0;
 	fit_monomial(sizes, time, exponent, coefficient);
 
-	std::cout << coefficient << " " << exponent << std::endl;
+	save_fit_ts(exponent, coefficient, problem_id, sizes, time);
 	
 	return 0;
 }
