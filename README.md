@@ -44,4 +44,6 @@ Asegúrese de estar dentro del directorio en el cual se encuentra este documento
 
 **Nota:** Por defecto el programa esta leyendo un archivo de parámetros de entrada con la siguiente ruta `code/input/input.txt`, sin embargo, para realizar el profiling y evaluar el uso de memoria, el archivo de entrada cambia a `code/input/input-profiling.txt` debido a los tiempos de ejecución y el no uso de banderas de optimización, los cuales no generan un cambio dentro de estos procesos.
 
+Es importante recalcar que los parámetros `lattice_size` y `n_iterations` deben estar relacionados de tal manera que `n_iterations` sea **mayor** al número mínimo de tiempo requerido para la convergencia calculado en el punto 2 para el correspondiete `lattice_size`.
+
 Es por ello que la generación de gráficas utilizadas en el reporte se realiza únicamente cuando se utiliza el comando `make`.

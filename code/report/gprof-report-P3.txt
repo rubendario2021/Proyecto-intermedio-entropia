@@ -3,15 +3,16 @@ Flat profile:
 Each sample counts as 0.01 seconds.
   %   cumulative   self              self     total           
  time   seconds   seconds    calls  us/call  us/call  name    
- 75.20      1.03     1.03   100000    10.30    13.70  random_movement(int&, int&, int&, std::vector<double, std::allocator<double> >&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_int_distribution<int>&, int&, int&)
- 24.82      1.37     0.34    64103     5.31     5.31  std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand()
-  0.00      1.37     0.00        3     0.00     0.00  std::vector<double, std::allocator<double> >::vector(unsigned long, double const&, std::allocator<double> const&)
-  0.00      1.37     0.00        2     0.00     0.00  std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > __gnu_cxx::__to_xstring<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char>(int (*)(char*, unsigned long, char const*, __va_list_tag*), unsigned long, char const*, ...)
-  0.00      1.37     0.00        1     0.00     0.00  read_params(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, int&, int&, int&, int&)
-  0.00      1.37     0.00        1     0.00     0.00  fit_monomial(std::vector<double, std::allocator<double> >&, std::vector<double, std::allocator<double> >&, double&, double&)
-  0.00      1.37     0.00        1     0.00     0.00  save_fit_rmsd(double&, double&, int&, std::vector<double, std::allocator<double> >&, std::vector<double, std::allocator<double> >&)
-  0.00      1.37     0.00        1     0.00     0.00  initialize_position(int&, int&, int&, std::vector<double, std::allocator<double> >&)
-  0.00      1.37     0.00        1     0.00     0.00  rmsd_val(int&, int&, std::vector<double, std::allocator<double> >&)
+ 78.43      6.14     6.14   598000    10.27    13.10  random_movement(int&, int&, int&, std::vector<double, std::allocator<double> >&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_int_distribution<int>&, int&, int&)
+ 21.59      7.83     1.69   383334     4.41     4.41  std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand()
+  0.00      7.83     0.00      199     0.00     0.00  rmsd_val(int&, int&, std::vector<double, std::allocator<double> >&)
+  0.00      7.83     0.00        5     0.00     0.00  std::vector<double, std::allocator<double> >::vector(unsigned long, double const&, std::allocator<double> const&)
+  0.00      7.83     0.00        2     0.00     0.00  std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > __gnu_cxx::__to_xstring<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char>(int (*)(char*, unsigned long, char const*, __va_list_tag*), unsigned long, char const*, ...)
+  0.00      7.83     0.00        1     0.00     0.00  read_params(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, int&, int&, int&, int&)
+  0.00      7.83     0.00        1     0.00     0.00  fit_monomial(std::vector<double, std::allocator<double> >&, std::vector<double, std::allocator<double> >&, double&, double&)
+  0.00      7.83     0.00        1     0.00     0.00  save_fit_rmsd(double&, double&, int&, std::vector<double, std::allocator<double> >&, std::vector<double, std::allocator<double> >&)
+  0.00      7.83     0.00        1     0.00     0.00  initialize_position(int&, int&, int&, std::vector<double, std::allocator<double> >&)
+  0.00      7.83     0.00        1     0.00     0.00  save_rmsd(int&, std::vector<double, std::allocator<double> >&, std::vector<double, std::allocator<double> >&)
 
  %         the percentage of the total running time of the
 time       program used by this function.
@@ -49,47 +50,51 @@ notice and this notice are preserved.
 		     Call graph (explanation follows)
 
 
-granularity: each sample hit covers 2 byte(s) for 0.73% of 1.37 seconds
+granularity: each sample hit covers 2 byte(s) for 0.13% of 7.83 seconds
 
 index % time    self  children    called     name
                                                  <spontaneous>
-[1]    100.0    0.00    1.37                 main [1]
-                1.03    0.34  100000/100000      random_movement(int&, int&, int&, std::vector<double, std::allocator<double> >&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_int_distribution<int>&, int&, int&) [2]
-                0.00    0.00       3/3           std::vector<double, std::allocator<double> >::vector(unsigned long, double const&, std::allocator<double> const&) [10]
-                0.00    0.00       1/1           read_params(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, int&, int&, int&, int&) [12]
-                0.00    0.00       1/1           initialize_position(int&, int&, int&, std::vector<double, std::allocator<double> >&) [15]
-                0.00    0.00       1/1           rmsd_val(int&, int&, std::vector<double, std::allocator<double> >&) [16]
-                0.00    0.00       1/1           fit_monomial(std::vector<double, std::allocator<double> >&, std::vector<double, std::allocator<double> >&, double&, double&) [13]
-                0.00    0.00       1/1           save_fit_rmsd(double&, double&, int&, std::vector<double, std::allocator<double> >&, std::vector<double, std::allocator<double> >&) [14]
+[1]    100.0    0.00    7.83                 main [1]
+                6.14    1.69  598000/598000      random_movement(int&, int&, int&, std::vector<double, std::allocator<double> >&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_int_distribution<int>&, int&, int&) [2]
+                0.00    0.00     199/199         rmsd_val(int&, int&, std::vector<double, std::allocator<double> >&) [10]
+                0.00    0.00       5/5           std::vector<double, std::allocator<double> >::vector(unsigned long, double const&, std::allocator<double> const&) [11]
+                0.00    0.00       1/1           read_params(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, int&, int&, int&, int&) [13]
+                0.00    0.00       1/1           initialize_position(int&, int&, int&, std::vector<double, std::allocator<double> >&) [16]
+                0.00    0.00       1/1           fit_monomial(std::vector<double, std::allocator<double> >&, std::vector<double, std::allocator<double> >&, double&, double&) [14]
+                0.00    0.00       1/1           save_fit_rmsd(double&, double&, int&, std::vector<double, std::allocator<double> >&, std::vector<double, std::allocator<double> >&) [15]
+                0.00    0.00       1/1           save_rmsd(int&, std::vector<double, std::allocator<double> >&, std::vector<double, std::allocator<double> >&) [17]
 -----------------------------------------------
-                1.03    0.34  100000/100000      main [1]
-[2]    100.0    1.03    0.34  100000         random_movement(int&, int&, int&, std::vector<double, std::allocator<double> >&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_int_distribution<int>&, int&, int&) [2]
-                0.34    0.00   64103/64103       std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand() [3]
+                6.14    1.69  598000/598000      main [1]
+[2]    100.0    6.14    1.69  598000         random_movement(int&, int&, int&, std::vector<double, std::allocator<double> >&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_int_distribution<int>&, int&, int&) [2]
+                1.69    0.00  383334/383334      std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand() [3]
 -----------------------------------------------
-                0.34    0.00   64103/64103       random_movement(int&, int&, int&, std::vector<double, std::allocator<double> >&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_int_distribution<int>&, int&, int&) [2]
-[3]     24.8    0.34    0.00   64103         std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand() [3]
+                1.69    0.00  383334/383334      random_movement(int&, int&, int&, std::vector<double, std::allocator<double> >&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_int_distribution<int>&, int&, int&) [2]
+[3]     21.6    1.69    0.00  383334         std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand() [3]
 -----------------------------------------------
-                0.00    0.00       3/3           main [1]
-[10]     0.0    0.00    0.00       3         std::vector<double, std::allocator<double> >::vector(unsigned long, double const&, std::allocator<double> const&) [10]
+                0.00    0.00     199/199         main [1]
+[10]     0.0    0.00    0.00     199         rmsd_val(int&, int&, std::vector<double, std::allocator<double> >&) [10]
 -----------------------------------------------
-                0.00    0.00       2/2           save_fit_rmsd(double&, double&, int&, std::vector<double, std::allocator<double> >&, std::vector<double, std::allocator<double> >&) [14]
-[11]     0.0    0.00    0.00       2         std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > __gnu_cxx::__to_xstring<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char>(int (*)(char*, unsigned long, char const*, __va_list_tag*), unsigned long, char const*, ...) [11]
+                0.00    0.00       5/5           main [1]
+[11]     0.0    0.00    0.00       5         std::vector<double, std::allocator<double> >::vector(unsigned long, double const&, std::allocator<double> const&) [11]
 -----------------------------------------------
-                0.00    0.00       1/1           main [1]
-[12]     0.0    0.00    0.00       1         read_params(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, int&, int&, int&, int&) [12]
------------------------------------------------
-                0.00    0.00       1/1           main [1]
-[13]     0.0    0.00    0.00       1         fit_monomial(std::vector<double, std::allocator<double> >&, std::vector<double, std::allocator<double> >&, double&, double&) [13]
+                0.00    0.00       2/2           save_fit_rmsd(double&, double&, int&, std::vector<double, std::allocator<double> >&, std::vector<double, std::allocator<double> >&) [15]
+[12]     0.0    0.00    0.00       2         std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > __gnu_cxx::__to_xstring<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char>(int (*)(char*, unsigned long, char const*, __va_list_tag*), unsigned long, char const*, ...) [12]
 -----------------------------------------------
                 0.00    0.00       1/1           main [1]
-[14]     0.0    0.00    0.00       1         save_fit_rmsd(double&, double&, int&, std::vector<double, std::allocator<double> >&, std::vector<double, std::allocator<double> >&) [14]
-                0.00    0.00       2/2           std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > __gnu_cxx::__to_xstring<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char>(int (*)(char*, unsigned long, char const*, __va_list_tag*), unsigned long, char const*, ...) [11]
+[13]     0.0    0.00    0.00       1         read_params(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, int&, int&, int&, int&) [13]
 -----------------------------------------------
                 0.00    0.00       1/1           main [1]
-[15]     0.0    0.00    0.00       1         initialize_position(int&, int&, int&, std::vector<double, std::allocator<double> >&) [15]
+[14]     0.0    0.00    0.00       1         fit_monomial(std::vector<double, std::allocator<double> >&, std::vector<double, std::allocator<double> >&, double&, double&) [14]
 -----------------------------------------------
                 0.00    0.00       1/1           main [1]
-[16]     0.0    0.00    0.00       1         rmsd_val(int&, int&, std::vector<double, std::allocator<double> >&) [16]
+[15]     0.0    0.00    0.00       1         save_fit_rmsd(double&, double&, int&, std::vector<double, std::allocator<double> >&, std::vector<double, std::allocator<double> >&) [15]
+                0.00    0.00       2/2           std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > __gnu_cxx::__to_xstring<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char>(int (*)(char*, unsigned long, char const*, __va_list_tag*), unsigned long, char const*, ...) [12]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[16]     0.0    0.00    0.00       1         initialize_position(int&, int&, int&, std::vector<double, std::allocator<double> >&) [16]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[17]     0.0    0.00    0.00       1         save_rmsd(int&, std::vector<double, std::allocator<double> >&, std::vector<double, std::allocator<double> >&) [17]
 -----------------------------------------------
 
  This table describes the call tree of the program, and was sorted by
@@ -182,6 +187,7 @@ notice and this notice are preserved.
 
 Index by function name
 
-  [12] read_params(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, int&, int&, int&, int&) [2] random_movement(int&, int&, int&, std::vector<double, std::allocator<double> >&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_int_distribution<int>&, int&, int&) [11] std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > __gnu_cxx::__to_xstring<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char>(int (*)(char*, unsigned long, char const*, __va_list_tag*), unsigned long, char const*, ...)
-  [13] fit_monomial(std::vector<double, std::allocator<double> >&, std::vector<double, std::allocator<double> >&, double&, double&) [15] initialize_position(int&, int&, int&, std::vector<double, std::allocator<double> >&) [3] std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand()
-  [14] save_fit_rmsd(double&, double&, int&, std::vector<double, std::allocator<double> >&, std::vector<double, std::allocator<double> >&) [16] rmsd_val(int&, int&, std::vector<double, std::allocator<double> >&) [10] std::vector<double, std::allocator<double> >::vector(unsigned long, double const&, std::allocator<double> const&)
+  [13] read_params(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, int&, int&, int&, int&) [16] initialize_position(int&, int&, int&, std::vector<double, std::allocator<double> >&) [3] std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand()
+  [14] fit_monomial(std::vector<double, std::allocator<double> >&, std::vector<double, std::allocator<double> >&, double&, double&) [10] rmsd_val(int&, int&, std::vector<double, std::allocator<double> >&) [11] std::vector<double, std::allocator<double> >::vector(unsigned long, double const&, std::allocator<double> const&)
+  [15] save_fit_rmsd(double&, double&, int&, std::vector<double, std::allocator<double> >&, std::vector<double, std::allocator<double> >&) [17] save_rmsd(int&, std::vector<double, std::allocator<double> >&, std::vector<double, std::allocator<double> >&)
+   [2] random_movement(int&, int&, int&, std::vector<double, std::allocator<double> >&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_int_distribution<int>&, int&, int&) [12] std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > __gnu_cxx::__to_xstring<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char>(int (*)(char*, unsigned long, char const*, __va_list_tag*), unsigned long, char const*, ...)

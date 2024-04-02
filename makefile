@@ -17,7 +17,6 @@ optimized:
 	$(MAKE) -C $(CODE_DIR) run_P3 OPT=1
 #	$(MAKE) -C $(CODE_DIR) run_P4 OPT=1
 #	$(MAKE) -C $(CODE_DIR) plot_molecules plot_entropy plot_fit_rmsd plot_fit_ts plot_fit_mt
-	$(MAKE) -C $(CODE_DIR) plot_fit_rmsd
 	$(MAKE) -C $(CODE_DIR) clean
 
 # Target that execute with optimizers

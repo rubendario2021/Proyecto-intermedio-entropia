@@ -29,7 +29,6 @@ int main(int argc, char *argv[]){
 	// Skipped values to avoid initial tail
 	int skipped = 100;
 
-	n_iterations *= 3;
 	// Definition of some values to save and optimize output files
 	int save_step = 2000;
 	int values_saved_1 = stabilization_time/save_step;
