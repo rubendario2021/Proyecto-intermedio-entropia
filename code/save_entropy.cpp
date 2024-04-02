@@ -2,7 +2,7 @@
 
 void save_entropy(int &n_iterations, int &grid_size,int &save_step, int &problem_id, std::vector<double> &entropy) {
   // The text file is opened
-	std::string file_name = "output/P" + std::to_string(problem_id) + "/entropy_gs_" + std::to_string(grid_size) + ".txt";
+	std::string file_name = "output/P" + std::to_string(problem_id) + "/entropy.txt";
 
   // The information about entropy vs time is saved in the text file
 	std::ofstream output_file(file_name);

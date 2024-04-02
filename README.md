@@ -4,18 +4,19 @@ Por favor antes de ejecutar las intrucciones, lea el siguiente archivo con cuida
 
 Asegúrese de estar dentro del directorio en el cual se encuentra este documento y ejecute los siguientes comandos en función de la acción que busque realizar.
 
-1. Para compilar y ejecutar el código base con sanitizers, optimización y generar las gráficas.
+1. Para compilar y ejecutar el código base con sanitizers, optimización y generar las gráficas. Las gráficas son guardadas en el directorio `output`.
 
 	```
 	make
 	```
+
+	**Nota:** Los códigos de gnuplot con los que se realiza la graficación, están elaborados para los valores del informe. No garantizamos un buen ajuste de ejes para otros valores.
 
 2. Para compilar y ejecutar sin optimización. No tiene contemplado la generación de gráficas.
 
 	```
 	make no_optimized
 	```
-	**Nota:** Los códigos de gnuplot con los que se realiza la graficación, están elaborados para los valores del informe. No garantizamos un buena ajuste de ejes
 
 3. Para hacer los test usando `catch2`. No utiliza banderas de optimización.
 
@@ -23,13 +24,13 @@ Asegúrese de estar dentro del directorio en el cual se encuentra este documento
 	make test
 	```
 
-4. Para hacer profiling con `gprof`. No utiliza banderas de optimización.
+4. Para hacer profiling con `gprof`. No utiliza banderas de optimización. El reporte es generado en el directorio `report`.
 
 	```
 	make gprof
 	```
 
-5. Para hacer profiling con `valgrind-cachegrind`. No utiliza banderas de optimización.
+5. Para hacer profiling con `valgrind-cachegrind`. No utiliza banderas de optimización. El reporte es generado en el directorio `report`.
 
 	```
 	make cachegrind

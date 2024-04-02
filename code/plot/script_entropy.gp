@@ -8,6 +8,7 @@ set autoscale y
 
 set format x "%.0tx10^{%T}"
 set xtics 1e6
+set ytics 1
 set grid
 
 set title "{/:Bold Entropy versus time}"
