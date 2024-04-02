@@ -15,6 +15,7 @@ Asegúrese de estar dentro del directorio en el cual se encuentra este documento
 	```
 	make no_optimized
 	```
+	**Nota:** Los códigos de gnuplot con los que se realiza la graficación, están elaborados para los valores del informe. No garantizamos un buena ajuste de ejes
 
 3. Para hacer los test usando `catch2`. No utiliza banderas de optimización.
 

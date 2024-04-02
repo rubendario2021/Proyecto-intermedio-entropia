@@ -12,6 +12,7 @@ end = strstrt(ARG2, ".pdf")
 expon = real(substr(ARG2, beg_1+6, beg_2-2))
 coeff = real(substr(ARG2, beg_2+6, end-1))
 
+set format x "%.0tx10^{%T}"
 set format y "%.0tx10^{%T}"
 set grid
 

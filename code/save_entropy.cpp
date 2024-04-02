@@ -13,6 +13,6 @@ void save_entropy(int &n_iterations, int &grid_size,int &save_step, int &problem
         
         output_file.close();
     } else {
-		std::cerr << "Error: Output file " + file_name + " was not created.";
+		std::cerr << "Error: Output file " + file_name + " was not created." << std::endl;
     }
 }

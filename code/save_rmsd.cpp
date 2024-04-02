@@ -12,6 +12,6 @@ void save_rmsd(int &n_iterations, int &save_step, int &problem_id, std::vector<d
         }
         output_file.close();
     } else {
-		std::cerr << "Error: Output file " + file_name + " was not created.";
+		std::cerr << "Error: Output file " + file_name + " was not created." << std::endl;
     }
 }

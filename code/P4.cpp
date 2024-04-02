@@ -26,6 +26,8 @@ int main(int argc, char *argv[]){
 	// Definition of some values to save and optimize output files
 	int save_step = 2000;
 	int values_saved = n_iterations/save_step;
+	std::vector<double> molecules_inside(values_saved, 0.0);
+	std::vector<double> time(values_saved, 0.0);
 
 	// The random number generator engine is created before the function to avoid initializing it on each call
     std::mt19937 gen(seed);
@@ -34,11 +36,22 @@ int main(int argc, char *argv[]){
 	// The code is iterated to perform the movement of molecules and their respective parameters
 	for (int save_idx = 0; save_idx < values_saved; save_idx++) {
 		
-		// A random movement of the particles is generated
 		for (int ii = 0; ii < save_step; ii++) {
 			random_movement(dim, n_molecules, lattice_size, molecules, gen, direction_distribution, problem_id, count_out);
 		}
+
+		molecules_inside[save_idx] = static_cast<double>(n_molecules - count_out);
+		time[save_idx] = static_cast<double>((save_idx+1) * save_step);
 	}
+
+	// Values to exponential fit
+	double exponent_coefficient = 0.0;
+	double coefficient = 0.0;
+	fit_exponential(time, molecules_inside, exponent_coefficient, coefficient);
+
+	std::cout << coefficient << " " << exponent_coefficient << std::endl;
+
+	save_fit_mt(exponent_coefficient, coefficient, problem_id, time, molecules_inside);
 
 	return 0;
 }

@@ -9,10 +9,10 @@ void save_fit_ts(double &exponent, double &coefficient, int &problem_id, std::ve
 	if (output_file.is_open()) {
 		int n_elements = static_cast<int>(sizes.size());
         for (int i = 0; i < n_elements; i++) {
-            output_file << std::fixed << std::setprecision(6) << sizes[i] << "\t" << time[i] << std::endl;
+            output_file << sizes[i] << "\t" << time[i] << std::endl;
         }
         output_file.close();
     } else {
-		std::cerr << "Error: Output file " + file_name + " was not created.";
+		std::cerr << "Error: Output file " + file_name + " was not created." << std::endl;
     }
 }

@@ -19,7 +19,7 @@ void random_movement(int &dim, int &n_molecules, int &lattice_size, std::vector<
 
     for (int i = 0; i < n_molecules; i++){
         direction = direction_distribution(gen);
-		if ((problem_id == 4) && ((molecules[i*dim + pos_x] - out) <= 1e-3)) direction = 4;
+		if ((problem_id == 4) && (molecules[i*dim + pos_x] == out)) { direction = 4;}
 
         switch (direction) {
             case 0: // Up
@@ -47,6 +47,9 @@ void random_movement(int &dim, int &n_molecules, int &lattice_size, std::vector<
                 molecules[i*dim + pos_x] += step_size;
                 if (molecules[i*dim + pos_x] >= limit) molecules[i*dim + pos_x] -= step_backward;
                 break;
+
+			default:
+				break;
         }
     }   
 }

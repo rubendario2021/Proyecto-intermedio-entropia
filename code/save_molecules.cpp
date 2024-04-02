@@ -13,6 +13,6 @@ void save_molecules(int &iter, int &problem_id, int &dim, int &n_molecules, std:
         }
         output_file.close();
     } else {
-		std::cerr << "Error: Output file " + file_name + " was not created.";
+		std::cerr << "Error: Output file " + file_name + " was not created." << std::endl;
     }
 }
