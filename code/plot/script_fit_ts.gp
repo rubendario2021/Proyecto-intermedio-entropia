@@ -23,6 +23,6 @@ set ylabel "{/:Bold Time to stabilization}"
 set key font ",10" box
 
 plot ARG1 t "simulated" ps 0.3 pt 7 lc "black", \
-	 coeff * x**expon t "fitted" dashtype 2 lc "red"
+	 coeff * x**expon t "fitted" lw 2 dt 2 lc "red"
 
 unset output

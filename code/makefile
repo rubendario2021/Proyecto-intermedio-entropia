@@ -67,6 +67,7 @@ PLT_FIT_MT := $(PLT_DIR)/script_fit_mt.gp
 # List of all the data that can be plotted in this project
 MOL_DATA := $(OUT_DIR)/*/molecules*.txt
 ENT_DATA := $(OUT_DIR)/*/entropy*.txt
+RMSD_DATA := $(OUT_DIR)/*/rmsd*.txt
 FIT_RMSD_DATA := $(OUT_DIR)/*/fit_rmsd*.txt
 FIT_TS_DATA := $(OUT_DIR)/*/fit_ts*.txt
 FIT_MT_DATA := $(OUT_DIR)/*/fit_mt*.txt
@@ -188,7 +189,7 @@ plot_entropy: $(PLT_ENTROPY) $(ENT_DATA)
 # Plot all the files that are related to rmsd
 plot_fit_rmsd: $(PLT_FIT_RMSD) $(FIT_RMSD_DATA)
 	@for F in $(FIT_RMSD_DATA); do \
-		gnuplot -c $< $$F $$(dirname $$F)/$$(basename $$F .txt).pdf; \
+		gnuplot -c $< $$F $(RMSD_DATA) $$(dirname $$F)/$$(basename $$F .txt).pdf; \
 	done;
 
 # Plot all the files that are related to fit time vs size
@@ -208,4 +209,4 @@ plot_fit_mt: $(PLT_FIT_MT) $(FIT_MT_DATA)
 # Delete all the output files
 clean:
 	rm -f *.out *.out.* *.o
-	rm -f $(MOL_DATA) $(ENT_DATA) $(FIT_RMSD_DATA) $(FIT_TS_DATA) $(FIT_MT_DATA)
+	rm -f $(OUT_DIR)/*/*.txt

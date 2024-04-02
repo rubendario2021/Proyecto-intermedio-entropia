@@ -23,11 +23,23 @@ int main(int argc, char *argv[]){
 	// Definition of the initial positions of the molecules
 	initialize_position(dim, n_molecules, lattice_size, molecules);
 
+	// Percentage of time at which entropy stabilizes
+	int stabilization_time = static_cast<int>(7703.403*std::pow(lattice_size, 2.006)*0.7);
+	
+	// Skipped values to avoid initial tail
+	int skipped = 100;
+
+	n_iterations *= 3;
 	// Definition of some values to save and optimize output files
-	int save_step = 100000;
-	int values_saved = n_iterations/save_step;
-	std::vector<double> rmsd(values_saved, 0.0);
-	std::vector<double> time(values_saved, 0.0);
+	int save_step = 2000;
+	int values_saved_1 = stabilization_time/save_step;
+	int values_saved_2 = (n_iterations - stabilization_time)/save_step;
+	int values_saved = values_saved_1 + values_saved_2;
+
+	std::vector<double> rmsd_1(values_saved_1 - skipped, 0.0);
+	std::vector<double> time_1(values_saved_1 - skipped, 0.0);
+	std::vector<double> rmsd_2(values_saved_2, 0.0);
+	std::vector<double> time_2(values_saved_2, 0.0);
 		
 	// The random number generator engine is created before the function to avoid initializing it on each call
 	std::mt19937 gen(seed);
@@ -41,18 +53,26 @@ int main(int argc, char *argv[]){
 			random_movement(dim, n_molecules, lattice_size, molecules, gen, direction_distribution, problem_id, count_out);
 		}
 			
-		// Calculation of the system's entropy
-		rmsd[save_idx] = rmsd_val(dim, n_molecules, molecules);
-		time[save_idx] = static_cast<double>((save_idx+1) * save_step);
+		// Calculation of the rmsd of the molecules
+		if (save_idx >= skipped) {
+			if (save_idx < values_saved_1) {
+				rmsd_1[save_idx - skipped] = rmsd_val(dim, n_molecules, molecules);
+				time_1[save_idx - skipped] = static_cast<double>((save_idx+1) * save_step);
+			} else {
+				rmsd_2[save_idx - values_saved_1] = rmsd_val(dim, n_molecules, molecules);
+				time_2[save_idx - values_saved_1] = static_cast<double>((save_idx+1) * save_step);
+			}
+		} 
 	}
 
 	// Values to monomial fit
 	double exponent = 0.0;
 	double coefficient = 0.0;
-	fit_monomial(time, rmsd, exponent, coefficient);
+	fit_monomial(time_1, rmsd_1, exponent, coefficient);
 
 	// Saving rmsd data
-	save_fit_rmsd(exponent, coefficient, problem_id, time, rmsd);
+	save_fit_rmsd(exponent, coefficient, problem_id, time_1, rmsd_1);
+	save_rmsd(problem_id, time_2, rmsd_2);
 	
 	return 0;
 }
