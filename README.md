@@ -24,19 +24,19 @@ Asegúrese de estar dentro del directorio en el cual se encuentra este documento
 	make test
 	```
 
-4. Para hacer profiling con `gprof`. No utiliza banderas de optimización. El reporte es generado en el directorio `report`.
+4. Para hacer profiling con `gprof` utilizando banderas de optimización. El reporte es generado en el directorio `report`.
 
 	```
 	make gprof
 	```
 
-5. Para hacer profiling con `valgrind-cachegrind`. No utiliza banderas de optimización. El reporte es generado en el directorio `report`.
+5. Para hacer profiling con `valgrind-cachegrind` utilizando banderas de optimización. El reporte es generado en el directorio `report`.
 
 	```
 	make cachegrind
 	```
 
-6. Para evaluar el uso de memoria con `valgrind-memcheck`. No utiliza banderas de optimización.
+6. Para evaluar el uso de memoria con `valgrind-memcheck` utilizando banderas de optimización.
 
 	```
 	make memcheck
