@@ -49,8 +49,6 @@ int main(int argc, char *argv[]){
 	double coefficient = 0.0;
 	fit_exponential(time, molecules_inside, exponent_coefficient, coefficient);
 
-	std::cout << coefficient << " " << exponent_coefficient << std::endl;
-
 	save_fit_mt(exponent_coefficient, coefficient, problem_id, time, molecules_inside);
 
 	return 0;

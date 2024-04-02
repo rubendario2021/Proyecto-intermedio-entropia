@@ -6,7 +6,7 @@
 #include "rmsd_val.hpp"
 #include "random_movement.hpp"
 #include "save_molecules.hpp"
-#include "save_rmsd.hpp"
+#include "save_fit_rmsd.hpp"
 #include "save_entropy.hpp"
 #include "save_fit_ts.hpp"
 #include "save_fit_mt.hpp"

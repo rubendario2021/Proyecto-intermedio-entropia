@@ -13,16 +13,16 @@ expon = real(substr(ARG2, beg_1+6, beg_2-2))
 coeff = real(substr(ARG2, beg_2+6, end-1))
 
 set format x "%.0tx10^{%T}"
-set format y "%.0tx10^{%T}"
 set grid
 
-set title "{/:Bold Time vs lattice size}"
-set xlabel "{/:Bold lattice size}"
-set ylabel "{/:Bold Time to stabilization}"
+set title "{/:Bold RMSD versus time}"
+set xlabel "{/:Bold time}"
+set ylabel "{/:Bold RMSD}"
 
 set key font ",10" box
+set key bottom right
 
-plot ARG1 t "simulated" ps 0.3 pt 7 lc "black", \
+plot ARG1 t "simulated" ps 0.1 pt 7 lc "black", \
 	 coeff * x**expon t "fitted" dashtype 2 lc "red"
 
 unset output

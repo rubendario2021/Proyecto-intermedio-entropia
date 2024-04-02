@@ -17,5 +17,6 @@ double rmsd_val(int &dim, int &n_molecules, std::vector<double> &molecules) {
 	
     // Applying formula
 	double root_mean_square = std::sqrt(sum/n_molecules);
+	
 	return root_mean_square;
 }

@@ -23,11 +23,11 @@ int main(int argc, char *argv[]){
 	// Definition of the initial positions of the molecules
 	initialize_position(dim, n_molecules, lattice_size, molecules);
 
-	n_iterations *= 3;
 	// Definition of some values to save and optimize output files
-	int save_step = 2000;
+	int save_step = 100000;
 	int values_saved = n_iterations/save_step;
 	std::vector<double> rmsd(values_saved, 0.0);
+	std::vector<double> time(values_saved, 0.0);
 		
 	// The random number generator engine is created before the function to avoid initializing it on each call
 	std::mt19937 gen(seed);
@@ -43,15 +43,16 @@ int main(int argc, char *argv[]){
 			
 		// Calculation of the system's entropy
 		rmsd[save_idx] = rmsd_val(dim, n_molecules, molecules);
+		time[save_idx] = static_cast<double>((save_idx+1) * save_step);
 	}
 
 	// Values to monomial fit
-	// double exponent = 0.0;
-	// double coefficient = 0.0;
-	// fit_monomial(sizes, time, exponent, coefficient);
+	double exponent = 0.0;
+	double coefficient = 0.0;
+	fit_monomial(time, rmsd, exponent, coefficient);
 
 	// Saving rmsd data
-	save_rmsd(n_iterations, save_step, problem_id, rmsd);
+	save_fit_rmsd(exponent, coefficient, problem_id, time, rmsd);
 	
 	return 0;
 }
