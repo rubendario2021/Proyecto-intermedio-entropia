@@ -12,8 +12,7 @@ int main(int argc, char *argv[]){
 	int seed = 0;
 
 	// Call the file "input.txt" and a function to read the variables and assign them
-	// Change this, make it console dependent
-	std::string ifile_name = std::string(argv[1]);
+	std::string ifile_name = std::string(argv[1]); // Change this, make it console dependent
 	read_params(ifile_name, n_molecules, lattice_size, n_iterations, seed);
 
 	// Creation of the matrix of particle positions
@@ -40,6 +39,7 @@ int main(int argc, char *argv[]){
 			random_movement(dim, n_molecules, lattice_size, molecules, gen, direction_distribution, problem_id, count_out);
 		}
 
+		// Save the number of molecules each save_step
 		molecules_inside[save_idx] = static_cast<double>(n_molecules - count_out);
 		time[save_idx] = static_cast<double>((save_idx+1) * save_step);
 	}

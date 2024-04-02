@@ -11,6 +11,7 @@ void random_movement(int &dim, int &n_molecules, int &lattice_size, std::vector<
     double limit = lattice_size/2.0; // Limit for a centered coordinate system
     double m_limit = -1.0*limit;
 
+    // Definition of constants for the hole in the wall
 	double hole = lattice_size/10.0;
     double out = 2.0*lattice_size;
 
@@ -19,6 +20,8 @@ void random_movement(int &dim, int &n_molecules, int &lattice_size, std::vector<
 
     for (int i = 0; i < n_molecules; i++){
         direction = direction_distribution(gen);
+        
+        //If the molecule is outside the container, then it should ignore the movement
 		if ((problem_id == 4) && (molecules[i*dim + pos_x] == out)) { direction = 4;}
 
         switch (direction) {
@@ -31,6 +34,7 @@ void random_movement(int &dim, int &n_molecules, int &lattice_size, std::vector<
                 molecules[i*dim + pos_y] -= step_size;
                 if (molecules[i*dim + pos_y] <= m_limit) {
 					molecules[i*dim + pos_y] += step_backward;
+                    //For problem 4, if the position in x is within 1/5 of the container's side value, then the molecule is removed
 					if ((problem_id == 4) && (std::fabs(molecules[i*dim + pos_x]) < hole)) {
 						molecules[i*dim + pos_x] = out;
 						count_out++;

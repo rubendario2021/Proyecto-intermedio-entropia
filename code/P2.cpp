@@ -12,8 +12,7 @@ int main(int argc, char *argv[]){
 	int seed = 0;
 
 	// Call the file "input.txt" and a function to read the variables and assign them
-	// Change this, make it console dependent
-	std::string ifile_name = std::string(argv[1]);
+	std::string ifile_name = std::string(argv[1]); 	// Change this, make it console dependent
 	read_params(ifile_name, n_molecules, lattice_size, n_iterations, seed);
 
 	// Creation of the matrix of particle positions

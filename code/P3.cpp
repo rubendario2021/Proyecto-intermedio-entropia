@@ -12,8 +12,7 @@ int main(int argc, char *argv[]){
 	int seed = 0;
 
 	// Call the file "input.txt" and a function to read the variables and assign them
-	// Change this, make it console dependent
-	std::string ifile_name = std::string(argv[1]);
+	std::string ifile_name = std::string(argv[1]); // Change this, make it console dependent
 	read_params(ifile_name, n_molecules, lattice_size, n_iterations, seed);
 
 	// Creation of the matrix of particle positions
@@ -57,7 +56,7 @@ int main(int argc, char *argv[]){
 			if (save_idx < values_saved_1) {
 				rmsd_1[save_idx - skipped] = rmsd_val(dim, n_molecules, molecules);
 				time_1[save_idx - skipped] = static_cast<double>((save_idx+1) * save_step);
-			} else {
+			} else { //Information continues to be stored for plotting the function, but not for calculating the function's fit
 				rmsd_2[save_idx - values_saved_1] = rmsd_val(dim, n_molecules, molecules);
 				time_2[save_idx - values_saved_1] = static_cast<double>((save_idx+1) * save_step);
 			}
