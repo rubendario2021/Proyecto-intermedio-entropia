@@ -40,10 +40,15 @@ int main(int argc, char *argv[]){
 	std::vector<double> sizes(number_sizes, 0);
 	sizes = {d_lattice_size/4, d_lattice_size/2, d_lattice_size, d_lattice_size*3/2, d_lattice_size*2};
 
-	// Storage to time
+	// Storage the result to vector time
 	std::vector<double> time(number_sizes, 0.0);
 
+	//Definition of the vector for save computing time
+	std::vector<double> computing_time(number_sizes, 0);
+
 	for (int ii = 0; ii < number_sizes; ii++) {
+		// Compute the initial time
+		auto start = std::chrono::steady_clock::now();
 
 		size = static_cast<int>(sizes[ii]);
 		
@@ -80,6 +85,11 @@ int main(int argc, char *argv[]){
 
 		// Restarting condition
 		perc = 0.0;	
+
+		//Compute the end time
+		auto end = std::chrono::steady_clock::now();
+		auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+		computing_time[ii] = duration.count();
 	}
 
 	// Values to monomial fit
@@ -89,5 +99,8 @@ int main(int argc, char *argv[]){
 
 	save_fit_ts(exponent, coefficient, problem_id, sizes, time);
 	
+	//Save computing time in txt file
+	save_computing_time(problem_id, number_sizes, computing_time, sizes);
+
 	return 0;
 }

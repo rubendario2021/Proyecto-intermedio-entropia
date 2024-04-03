@@ -62,11 +62,13 @@ PLT_ENTROPY := $(PLT_DIR)/script_entropy.gp
 PLT_FIT_RMSD := $(PLT_DIR)/script_fit_rmsd.gp
 PLT_FIT_TS := $(PLT_DIR)/script_fit_ts.gp
 PLT_FIT_MT := $(PLT_DIR)/script_fit_mt.gp
+PLT_COMP := $(PLT_DIR)/script_comp_time.gp
 
 # Plotting data:
 # List of all the data that can be plotted in this project
 MOL_DATA := $(OUT_DIR)/*/molecules*.txt
 ENT_DATA := $(OUT_DIR)/*/entropy*.txt
+COMP_DATA := $(OUT_DIR)/*/Computing_time.txt
 RMSD_DATA := $(OUT_DIR)/*/rmsd*.txt
 FIT_RMSD_DATA := $(OUT_DIR)/*/fit_rmsd*.txt
 FIT_TS_DATA := $(OUT_DIR)/*/fit_ts*.txt
@@ -203,7 +205,13 @@ plot_fit_mt: $(PLT_FIT_MT) $(FIT_MT_DATA)
 	@for F in $(FIT_MT_DATA); do \
 		gnuplot -c $< $$F $$(dirname $$F)/$$(basename $$F .txt).pdf; \
 	done;
-	
+
+# Plot all the files that are related to computing time vs lattice_size
+plot_comp_time: $(PLT_COMP) $(COMP_DATA)
+	@for F in $(COMP_DATA); do \
+		gnuplot -c $< $$F $$(dirname $$F)/$$(basename $$F .txt).pdf; \
+	done;
+		
 
 # Clean target:
 # Delete all the output files
